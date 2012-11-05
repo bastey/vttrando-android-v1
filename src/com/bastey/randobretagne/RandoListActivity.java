@@ -7,6 +7,7 @@ import java.util.List;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -50,7 +51,10 @@ public class RandoListActivity extends FragmentActivity implements
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rando_list);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+			getActionBar().setDisplayHomeAsUpEnabled(true);
+		}
 
 		/** Activité est-elle appelée depuis bouton Home (Up) de l'ActionBar ? */
 		boolean isCalledFromUpButton = Boolean.valueOf((Boolean) this

@@ -38,7 +38,7 @@
     <string name="label_dpt">Departement : </string>
     <string name="label_lieu">Lieu : </string>
     <string name="label_nom">Nom : </string>
-    <string name="label_orgo">Organisateur : </string>
+    <string name="label_orga">Organisateur : </string>
     <string name="label_rdv">Lieu de rdv : </string>
     <string name="label_horaire">Horaires : </string>
     <string name="label_site">Site web : </string>

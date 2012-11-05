@@ -23,10 +23,10 @@ public class RandosGenerator {
 		r1.setSiteWeb("");
 		r1.setContact("");
 		r1.setHoraires("7h45");
-		r1.setPrixPublic("3,50 pédestre , 4,50 VTT");
+		r1.setPrixPublic("3,50 pÃ©destre , 4,50 VTT");
 		r1.setPrixClub("");
-		r1.setLieuRdv("stade de st Gravé");
-		r1.setDescription("VTT : 24, 37 et 46 km Pédestre : 9, 11, 15 et 17 km");
+		r1.setLieuRdv("stade de st GravÃ©");
+		r1.setDescription("VTT : 24, 37 et 46 km PÃ©destre : 9, 11, 15 et 17 km");
 		r1.setUrlDetailWeb("http://www.nafix.fr/sorties/vtt-2012/fiche-rando-des-farfadets-20743-1.html");
 		randos.add(r1);
 
@@ -42,7 +42,7 @@ public class RandosGenerator {
 		r2.setLieu("TREGARVAN");
 		r2.setOrganisateur("KEMPER VTT");
 		r2.setContact("kempervtt@orange.fr");
-		r2.setHoraires("De 07h30 à 09h30");
+		r2.setHoraires("De 07h30 Ã  09h30");
 		r2.setPrixPublic("");
 		r2.setPrixClub("");
 		r2.setLieuRdv("VILLAGE DE VACANCES DE KERBEUZ");
@@ -62,7 +62,7 @@ public class RandosGenerator {
 		r3.setLieu("ERCE PRES LIFFRE");
 		r3.setOrganisateur("BRETAGNE VTT");
 		r3.setContact("contact@bretagnevtt.com  / 02 56 51 67 87");
-		r3.setHoraires("De 08h00 à 10h00");
+		r3.setHoraires("De 08h00 Ã  10h00");
 		r3.setPrixPublic("5 ?");
 		r3.setPrixClub("3 ?");
 		r3.setLieuRdv("ERCE PRES LIFFRE");
@@ -77,7 +77,7 @@ public class RandosGenerator {
 		r4.setDepartement(56);
 		r4.setDate(new GregorianCalendar(2012, GregorianCalendar.JUNE, 24)
 				.getTime());
-		r4.setNom("La vallée du sedon rando et raid vtt");
+		r4.setNom("La vallÃ©e du sedon rando et raid vtt");
 		r4.setSiteWeb("vttrando.free.fr/guegon/");
 		r4.setLieu("guegon");
 		r4.setOrganisateur("vtt club guegon");
@@ -86,7 +86,7 @@ public class RandosGenerator {
 		r4.setPrixPublic("5 euros vtt pour la rando * 9? pour le raid inscription sur le site internet * 12? sur place * 3.50 euros marche");
 		r4.setPrixClub("");
 		r4.setLieuRdv("Complexe Sportif");
-		r4.setDescription("Raid VTT de 80 km avec réservation sur http://vttrando.free.fr/guegon/ * Rando VTT de 25, 29, 31, 40 et 45 * Pédestre de 12, 15 et 17 km");
+		r4.setDescription("Raid VTT de 80 km avec rÃ©servation sur http://vttrando.free.fr/guegon/ * Rando VTT de 25, 29, 31, 40 et 45 * PÃ©destre de 12, 15 et 17 km");
 		r4.setUrlDetailWeb("http://www.nafix.fr/sorties/vtt-2012/fiche-la-vallee-du-sedon-rando-et-raid-vtt-21954-1.html");
 		randos.add(r4);
 
@@ -97,7 +97,7 @@ public class RandosGenerator {
 		r5.setDepartement(29);
 		r5.setDate(new GregorianCalendar(2012, GregorianCalendar.JUNE, 17)
 				.getTime());
-		r5.setNom("Rando VTT et Pédestre.");
+		r5.setNom("Rando VTT et PÃ©destre.");
 		r5.setSiteWeb("vtt-coat-meal.over-blog.com/");
 		r5.setLieu("coat meal");
 		r5.setOrganisateur("coat meal vtt");
@@ -106,7 +106,7 @@ public class RandosGenerator {
 		r5.setPrixPublic("");
 		r5.setPrixClub("");
 		r5.setLieuRdv("stade municipale");
-		r5.setDescription("rando vtt : 15 / 25 / 35 / 45 / 60 km * rando pedestre : 9 / 16 km * départ libre * lavage velo , douche , casse croute.");
+		r5.setDescription("rando vtt : 15 / 25 / 35 / 45 / 60 km * rando pedestre : 9 / 16 km * dÃ©part libre * lavage velo , douche , casse croute.");
 		r5.setUrlDetailWeb("http://www.nafix.fr/sorties/vtt-2012/fiche-rando-vtt-et-pedestre-23014-1.html");
 		randos.add(r5);
 
@@ -120,13 +120,13 @@ public class RandosGenerator {
 		r6.setNom("rando vtt et cyclo");
 		r6.setSiteWeb("");
 		r6.setLieu("ROUGE");
-		r6.setOrganisateur("comité des fetes de rougé");
+		r6.setOrganisateur("comitÃ© des fetes de rougÃ©");
 		r6.setContact("");
 		r6.setHoraires("8 h");
 		r6.setPrixPublic("vtt 4?50  et  2?  -14ans * cyclo 3?50  et 2? - 14ans");
 		r6.setPrixClub("");
-		r6.setLieuRdv("térrain des vallées 44660 rougé");
-		r6.setDescription("circuit VTT 40 et 20 km ,café au départ , ravitaillement, casse croute et boisson a l'arrivée * cyclo 70 et 50  km café au départ , casse croute et boisson a l'arrivée km");
+		r6.setLieuRdv("terrain des vallÃ©es 44660 rougÃ©");
+		r6.setDescription("circuit VTT 40 et 20 km ,cafÃ© au dÃ©part , ravitaillement, casse croute et boisson a l'arrivÃ©e * cyclo 70 et 50  km cafÃ© au dÃ©part , casse croute et boisson a l'arrivÃ©e km");
 		r6.setUrlDetailWeb("http://www.nafix.fr/sorties/vtt-2012/fiche-rando-vtt-et-cyclo-24718-1.html");
 		randos.add(r6);
 
@@ -137,16 +137,16 @@ public class RandosGenerator {
 		r7.setDepartement(35);
 		r7.setDate(new GregorianCalendar(2012, GregorianCalendar.JUNE, 23)
 				.getTime());
-		r7.setNom("24Heures VTT de la valière (9ème édition)");
+		r7.setNom("24Heures VTT de la valiÃ¨re (9Ã¨me Ã©dition)");
 		r7.setSiteWeb("www.vttpaysdevitre.org");
 		r7.setLieu("VITRE");
-		r7.setOrganisateur("Club VTT Au pays de Vitré");
+		r7.setOrganisateur("Club VTT Au pays de VitrÃ©");
 		r7.setContact("info@vttpaysdevitre.org / 06.75.80.88.73");
-		r7.setHoraires("Départ 15h");
-		r7.setPrixPublic("Tarif sur le site internet du club début 2012");
+		r7.setHoraires("DÃ©part 15h");
+		r7.setPrixPublic("Tarif sur le site internet du club dÃ©but 2012");
 		r7.setPrixClub("");
-		r7.setLieuRdv("Plan d'eau de la Valière - Moulin de la haie");
-		r7.setDescription("3 catégories : en solitaire, en relais de 4 et en relais de 6 * Bivouac ouvert dès le vendredi soir");
+		r7.setLieuRdv("Plan d'eau de la ValiÃ¨re - Moulin de la haie");
+		r7.setDescription("3 catÃ©gories : en solitaire, en relais de 4 et en relais de 6 * Bivouac ouvert dÃ¨s le vendredi soir");
 		r7.setUrlDetailWeb("http://www.nafix.fr/sorties/vtt-2012/fiche-24heures-vtt-de-la-valiere-9eme-edition-23490-1.html");
 		randos.add(r7);
 
@@ -166,7 +166,7 @@ public class RandosGenerator {
 		r8.setPrixPublic("");
 		r8.setPrixClub("");
 		r8.setLieuRdv("Salle communale");
-		r8.setDescription("VTT : 10-26-35-39-46-54 Km * Pédestre : 12-15-20 Km");
+		r8.setDescription("VTT : 10-26-35-39-46-54 Km * PÃ©destre : 12-15-20 Km");
 		r8.setUrlDetailWeb("http://www.nafix.fr/sorties/vtt-2012/fiche-la-gacelinette-20794-1.html");
 		randos.add(r8);
 
@@ -177,16 +177,16 @@ public class RandosGenerator {
 		r9.setDepartement(35);
 		r9.setDate(new GregorianCalendar(2012, GregorianCalendar.JUNE, 23)
 				.getTime());
-		r9.setNom("24Heures Cyclo de la valière (9ème édition)");
+		r9.setNom("24Heures Cyclo de la valiÃ¨re (9Ã¨me Ã©dition)");
 		r9.setSiteWeb("www.cyclopaysdevitre.org");
 		r9.setLieu("VITRE");
-		r9.setOrganisateur("Club Cycle Au pays de Vitré");
+		r9.setOrganisateur("Club Cycle Au pays de VitrÃ©");
 		r9.setContact("info@vttpaysdevitre.org / 06.75.80.88.73");
-		r9.setHoraires("Départ 15h");
-		r9.setPrixPublic("Tarif sur le site internet du club début 2012");
+		r9.setHoraires("DÃ©part 15h");
+		r9.setPrixPublic("Tarif sur le site internet du club dÃ©but 2012");
 		r9.setPrixClub("");
-		r9.setLieuRdv("Plan d'eau de la Valière - Moulin de la haie");
-		r9.setDescription("3 catégories : en solitaire, en relais de 4 et en relais de 6 * Bivouac ouvert dès le vendredi soir");
+		r9.setLieuRdv("Plan d'eau de la ValiÃ¨re - Moulin de la haie");
+		r9.setDescription("3 catÃ©gories : en solitaire, en relais de 4 et en relais de 6 * Bivouac ouvert dÃ¨s le vendredi soir");
 		r9.setUrlDetailWeb("http://www.nafix.fr/sorties/vtt-2012/fiche-24heures-vtt-de-la-valiere-9eme-edition-23490-1.html");
 		randos.add(r9);
 
@@ -200,13 +200,13 @@ public class RandosGenerator {
 		r10.setNom("LA GACELINETTE");
 		r10.setSiteWeb("");
 		r10.setLieu("LA CHAPELLE GACELINE");
-		r10.setOrganisateur("Club de l?Aff");
+		r10.setOrganisateur("Club de l'Aff");
 		r10.setContact("06 66 84 94 13  /  02.99.08.11.07 / 02 99 08 20 09 / patrick.sebillet@orange.fr");
 		r10.setHoraires("A partir de 7h45");
 		r10.setPrixPublic("");
 		r10.setPrixClub("");
 		r10.setLieuRdv("Salle communale");
-		r10.setDescription("VTT : 10-26-35-39-46-54 Km * Pédestre : 12-15-20 Km");
+		r10.setDescription("VTT : 10-26-35-39-46-54 Km * PÃ©destre : 12-15-20 Km");
 		r10.setUrlDetailWeb("http://www.nafix.fr/sorties/vtt-2012/fiche-la-gacelinette-20794-1.html");
 		randos.add(r10);
 
