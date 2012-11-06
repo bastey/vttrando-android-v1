@@ -56,7 +56,7 @@ public class RandoListActivity extends FragmentActivity implements
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
 
-		/** Activité est-elle appelée depuis bouton Home (Up) de l'ActionBar ? */
+		/** Activitï¿½ est-elle appelï¿½e depuis bouton Home (Up) de l'ActionBar ? */
 		boolean isCalledFromUpButton = Boolean.valueOf((Boolean) this
 				.getIntent().getExtras().getBoolean("upButton"));
 
@@ -132,9 +132,9 @@ public class RandoListActivity extends FragmentActivity implements
 	}
 
 	/**
-	 * Récupération dynamique d'une String dans "strings.xml".
+	 * Rï¿½cupï¿½ration dynamique d'une String dans "strings.xml".
 	 * 
-	 * @param aString Libelle de la chaine à récuperer
+	 * @param aString Libelle de la chaine ï¿½ rï¿½cuperer
 	 * @return Valeur
 	 */
 	private String getStringResourceByName(String aString) {
@@ -169,7 +169,8 @@ public class RandoListActivity extends FragmentActivity implements
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			// Called when the Home (Up) button is pressed in the ActionBar.
-			NavUtils.navigateUpFromSameTask(this);
+			//NavUtils.navigateUpFromSameTask(this);
+			finish();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
