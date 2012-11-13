@@ -11,7 +11,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.NavUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -56,7 +55,7 @@ public class RandoListActivity extends FragmentActivity implements
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
 
-		/** Activit� est-elle appel�e depuis bouton Home (Up) de l'ActionBar ? */
+		/** Activite est-elle appelee depuis bouton Home (Up) de l'ActionBar ? */
 		boolean isCalledFromUpButton = Boolean.valueOf((Boolean) this
 				.getIntent().getExtras().getBoolean("upButton"));
 

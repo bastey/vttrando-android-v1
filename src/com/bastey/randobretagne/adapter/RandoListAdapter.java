@@ -3,6 +3,7 @@ package com.bastey.randobretagne.adapter;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ public class RandoListAdapter extends ArrayAdapter<Rando> {
 
 	List<Rando> randos;
 	int viewRes;
+	final int backgroundLineColor = Color.rgb(211, 247, 163);
 
 	public RandoListAdapter(Context context, int textViewResourceId,
 			List<Rando> pRandos) {
@@ -53,6 +55,10 @@ public class RandoListAdapter extends ArrayAdapter<Rando> {
 			tvLieu.setText(lieu);
 
 		}
+		if (position % 2 != 0) {
+			v.setBackgroundColor(backgroundLineColor);
+		}
+
 		return v;
 	}
 }
