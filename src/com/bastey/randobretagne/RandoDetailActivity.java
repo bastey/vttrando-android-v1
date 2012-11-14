@@ -7,8 +7,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.bastey.randobretagne.domain.Rando;
+
 /**
- * Activité détail d'une randonnée.
+ * Activite detail d'une randonnee.
  * 
  * @author bastey
  * 
@@ -17,6 +19,8 @@ public class RandoDetailActivity extends Activity {
 
 	private TextView date, departement, lieu, nom, organisateur, lieu_rdv,
 			horaire, site_web, prix_public, prix_club, contact, description;
+
+	private Rando selectedRando;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -28,45 +32,46 @@ public class RandoDetailActivity extends Activity {
 		}
 
 		Bundle args = getIntent().getExtras();
+		selectedRando = args.getParcelable("rando");
 
 		date = (TextView) this.findViewById(R.id.detail_date_valeur);
-		date.setText(args.getString("date"));
+		date.setText(selectedRando.getDateStr());
 
 		departement = (TextView) this
 				.findViewById(R.id.detail_departement_valeur);
-		departement.setText(String.valueOf(args.getInt("departement")));
+		departement.setText(String.valueOf(selectedRando.getDepartement()));
 
 		lieu = (TextView) this.findViewById(R.id.detail_lieu_valeur);
-		lieu.setText(args.getString("lieu"));
+		lieu.setText(selectedRando.getLieu());
 
 		nom = (TextView) this.findViewById(R.id.detail_nom_valeur);
-		nom.setText(args.getString("nom"));
+		nom.setText(selectedRando.getNom());
 
 		organisateur = (TextView) this.findViewById(R.id.detail_orga_valeur);
-		organisateur.setText(args.getString("organisateur"));
+		organisateur.setText(selectedRando.getOrganisateur());
 
 		lieu_rdv = (TextView) this.findViewById(R.id.detail_lieu_rdv_valeur);
-		lieu_rdv.setText(args.getString("lieu_rdv"));
+		lieu_rdv.setText(selectedRando.getLieuRdv());
 
 		horaire = (TextView) this.findViewById(R.id.detail_horaire_valeur);
-		horaire.setText(args.getString("horaire"));
+		horaire.setText(selectedRando.getHoraires());
 
 		site_web = (TextView) this.findViewById(R.id.detail_site_web_valeur);
-		site_web.setText(args.getString("site_web"));
+		site_web.setText(selectedRando.getSiteWeb());
 
 		prix_public = (TextView) this
 				.findViewById(R.id.detail_prix_public_valeur);
-		prix_public.setText(args.getString("prix_public"));
+		prix_public.setText(selectedRando.getPrixPublic());
 
 		prix_club = (TextView) this.findViewById(R.id.detail_prix_club_valeur);
-		prix_club.setText(args.getString("prix_club"));
+		prix_club.setText(selectedRando.getPrixClub());
 
 		contact = (TextView) this.findViewById(R.id.detail_contact_valeur);
-		contact.setText(args.getString("contact"));
+		contact.setText(selectedRando.getContact());
 
 		description = (TextView) this
 				.findViewById(R.id.detail_description_valeur);
-		description.setText(args.getString("description"));
+		description.setText(selectedRando.getDescription());
 	}
 
 	@Override

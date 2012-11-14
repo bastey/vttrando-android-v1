@@ -1,16 +1,20 @@
 package com.bastey.randobretagne.domain;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
- * Objet Randonnée.
+ * Objet Randonnee.
  * 
  * @author bastey
  * @version 1.0
  * 
  */
-public class Rando implements Comparable<Rando> {
+public class Rando implements Comparable<Rando>, Parcelable {
 
 	/** Reference de la rando. */
 	private int id;
@@ -62,8 +66,11 @@ public class Rando implements Comparable<Rando> {
 	/** URL PAGE WEB DETAIL DE LA RANDO. */
 	private String urlDetailWeb;
 
+	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	private SimpleDateFormat sdfWithoutYear = new SimpleDateFormat("dd/MM");
+
 	/**
-	 * Constructeur par défaut.
+	 * Constructeur par defaut.
 	 */
 	public Rando() {
 		super();
@@ -101,16 +108,13 @@ public class Rando implements Comparable<Rando> {
 	 * @return the date au format dd/MM
 	 */
 	public String getDateStr() {
-		// SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM");
-		return sdf.format(date);
+		return sdfWithoutYear.format(date);
 	}
 
 	/**
 	 * @return the date au format dd/MM/yyyy
 	 */
-	public String getDateStrDetail() {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	private String getDateStrDetail() {
 		return sdf.format(date);
 	}
 
@@ -373,6 +377,67 @@ public class Rando implements Comparable<Rando> {
 			result = this.getNom().compareToIgnoreCase(rando.getNom());
 		}
 		return result;
+	}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeInt(id);
+		dest.writeString(typeSport.getLabel());
+		dest.writeInt(departement);
+		dest.writeString(this.getDateStrDetail());
+		dest.writeString(lieu);
+		dest.writeString(nom);
+		dest.writeString(organisateur);
+		dest.writeString(lieuRdv);
+		dest.writeString(horaires);
+		dest.writeString(siteWeb);
+		dest.writeString(prixPublic);
+		dest.writeString(prixClub);
+		dest.writeString(contact);
+		dest.writeString(description);
+		dest.writeString(urlFlyer);
+		dest.writeString(urlDetailWeb);
+	}
+
+	public static final Parcelable.Creator<Rando> CREATOR = new Parcelable.Creator<Rando>() {
+		@Override
+		public Rando createFromParcel(Parcel source) {
+			return new Rando(source);
+		}
+
+		@Override
+		public Rando[] newArray(int size) {
+			return new Rando[size];
+		}
+	};
+
+	public Rando(Parcel in) {
+		try {
+		this.id = in.readInt();
+		this.typeSport = EnumTypeSport.getTypeSport(in.readString());
+		this.departement = in.readInt();
+		this.date = sdf.parse(in.readString());
+		this.lieu = in.readString();
+		this.nom = in.readString();
+		this.organisateur = in.readString();
+		this.lieuRdv = in.readString();
+		this.horaires = in.readString();
+		this.siteWeb = in.readString();
+		this.prixPublic = in.readString();
+		this.prixClub = in.readString();
+		this.contact = in.readString();
+		this.description = in.readString();
+		this.urlFlyer = in.readString();
+		this.urlDetailWeb = in.readString();
+		} catch (ParseException e) {
+			// TODO
+			e.printStackTrace();
+		}
 	}
 
 }

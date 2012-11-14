@@ -231,9 +231,6 @@ public class RandoListActivity extends FragmentActivity implements
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
 
-			// Bundle args = getArguments();
-			// selectedMonth = args.getInt("month");
-
 			activiteListeRando = (RandoListActivity) getActivity();
 			listView = new ListView(activiteListeRando);
 			listView.setAdapter(activiteListeRando.getAdapter());
@@ -250,23 +247,8 @@ public class RandoListActivity extends FragmentActivity implements
 
 					Intent iDetail = new Intent(activiteListeRando
 							.getApplicationContext(), RandoDetailActivity.class);
-					iDetail.putExtra("date", selectedRando.getDateStrDetail());
-					iDetail.putExtra("departement",
-							selectedRando.getDepartement());
 
-					iDetail.putExtra("lieu", selectedRando.getLieu());
-					iDetail.putExtra("nom", selectedRando.getNom());
-					iDetail.putExtra("organisateur",
-							selectedRando.getOrganisateur());
-					iDetail.putExtra("lieu_rdv", selectedRando.getLieuRdv());
-					iDetail.putExtra("horaire", selectedRando.getHoraires());
-					iDetail.putExtra("site_web", selectedRando.getSiteWeb());
-					iDetail.putExtra("prix_public",
-							selectedRando.getPrixPublic());
-					iDetail.putExtra("prix_club", selectedRando.getPrixClub());
-					iDetail.putExtra("contact", selectedRando.getContact());
-					iDetail.putExtra("description",
-							selectedRando.getDescription());
+					iDetail.putExtra("rando", selectedRando);
 					startActivity(iDetail);
 				}
 			});
