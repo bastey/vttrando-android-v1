@@ -49,5 +49,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_test">TestActivity</string>
     <string name="title_activity_test_activity__list_child">TestActivity_ListChild</string>
+    
+    <string name="menu_exit">Sortir</string>
+    <string name="dialog_msg_exit">Voulez-vous quitter l\'application ?</string>
+    
 
 </resources>

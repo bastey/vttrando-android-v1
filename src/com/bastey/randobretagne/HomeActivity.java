@@ -1,10 +1,14 @@
 package com.bastey.randobretagne;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
@@ -98,5 +102,33 @@ public class HomeActivity extends Activity {
 			msg.show();
 
 		}
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.menu_exit:
+
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setMessage(R.string.dialog_msg_exit);
+			builder.setCancelable(false);
+			builder.setPositiveButton("Oui", new OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.cancel();
+					finish();
+				}
+			});
+			builder.setNegativeButton("Non", new OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.cancel();
+				}
+			});
+			builder.create().show();
+
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }
