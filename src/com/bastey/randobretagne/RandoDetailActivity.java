@@ -1,7 +1,6 @@
 package com.bastey.randobretagne;
 
 import android.app.Activity;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,9 +26,9 @@ public class RandoDetailActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rando_detail);
 
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-			getActionBar().setDisplayHomeAsUpEnabled(true);
-		}
+		// if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+		// getActionBar().setDisplayHomeAsUpEnabled(true);
+		// }
 
 		Bundle args = getIntent().getExtras();
 		selectedRando = args.getParcelable("rando");
@@ -82,13 +81,13 @@ public class RandoDetailActivity extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			// Called when the Home (Up) button is pressed in the ActionBar.
-			finish();
-			// onBackPressed(); //pour simuler un retour simple
-			return true;
-		}
+		// switch (item.getItemId()) {
+		// case android.R.id.home:
+		// // Called when the Home (Up) button is pressed in the ActionBar.
+		// finish();
+		// // onBackPressed(); //pour simuler un retour simple
+		// return true;
+		// }
 		return super.onOptionsItemSelected(item);
 	}
 

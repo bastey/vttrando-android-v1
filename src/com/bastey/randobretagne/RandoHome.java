@@ -16,10 +16,18 @@ import android.widget.Toast;
 
 import com.bastey.randobretagne.domain.EnumTypeSport;
 
-public class HomeActivity extends Activity {
+/**
+ * Page d'accueil de l'application Rando Bretagne.
+ */
+public class RandoHome extends Activity {
 
+	/** Composants définis dans la vue. */
 	private RadioButton radioVTT, radioCyclo, radioMarche;
 	private CheckBox dpt22, dpt29, dpt35, dpt56, dpt44;
+
+	/** Composants sélectionnés. */
+	private EnumTypeSport selectedSport = null;
+	private int[] selectedDepartements = null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -51,7 +59,6 @@ public class HomeActivity extends Activity {
 	 */
 	public void openRandoListView(View view) {
 
-		EnumTypeSport selectedSport = null;
 		if (radioVTT.isChecked()) {
 			selectedSport = EnumTypeSport.VTT;
 		} else if (radioCyclo.isChecked()) {
@@ -60,40 +67,40 @@ public class HomeActivity extends Activity {
 			selectedSport = EnumTypeSport.MARCHE;
 		}
 
-		int[] departements = new int[5];
-		boolean minOneCheched = false;
+		selectedDepartements = new int[5];
 		int i = 0;
+		boolean oneDepChecked = false;
 		if (dpt22.isChecked()) {
-			departements[i] = 22;
+			selectedDepartements[i] = 22;
 			i++;
-			minOneCheched = true;
+			oneDepChecked = true;
 		}
 		if (dpt29.isChecked()) {
-			departements[i] = 29;
+			selectedDepartements[i] = 29;
 			i++;
-			minOneCheched = true;
+			oneDepChecked = true;
 		}
 		if (dpt35.isChecked()) {
-			departements[i] = 35;
+			selectedDepartements[i] = 35;
 			i++;
-			minOneCheched = true;
+			oneDepChecked = true;
 		}
 		if (dpt56.isChecked()) {
-			departements[i] = 56;
+			selectedDepartements[i] = 56;
 			i++;
-			minOneCheched = true;
+			oneDepChecked = true;
 		}
 		if (dpt44.isChecked()) {
-			departements[i] = 44;
+			selectedDepartements[i] = 44;
 			i++;
-			minOneCheched = true;
+			oneDepChecked = true;
 		}
 
-		if (minOneCheched) {
+		if (oneDepChecked) {
 			Intent intent = new Intent(getApplicationContext(),
 					RandoListActivity.class);
 			intent.putExtra("typeSport", selectedSport.getValeur());
-			intent.putExtra("departements", departements);
+			intent.putExtra("departements", selectedDepartements);
 			startActivity(intent);
 		} else {
 			Toast msg = Toast.makeText(this, R.string.msg_choisir_dpt,

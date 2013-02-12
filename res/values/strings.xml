@@ -2,7 +2,7 @@
 
     <string name="app_name">Rando Bretagne</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_home">Bretagne</string>
+    <string name="title_activity_home">Rando Bretagne</string>
 
     <!-- Page d'accueil -->
     <string name="button_vtt_text">VTT</string>
@@ -16,6 +16,9 @@
     <string name="title_activity_rando_list">Randonnées</string>
     <string name="bouton_listRandos">Randonnées</string>
     <string name="msg_choisir_dpt">Veuillez sélectionner au moins 1 département pour continuer !</string>
+    <string name="label_titreHome">Le calendrier des randonnées en Bretagne</string>
+    <string name="label_sports">Sports :</string>
+    <string name="label_departements">Départements :</string>
 
     <!-- Page Liste des randos -->
     <string name="tab1">Janvier</string>
@@ -50,8 +53,10 @@
     <string name="title_activity_test">TestActivity</string>
     <string name="title_activity_test_activity__list_child">TestActivity_ListChild</string>
     
+    <!-- Menus -->
     <string name="menu_exit">Sortir</string>
     <string name="dialog_msg_exit">Voulez-vous quitter l\'application ?</string>
-    
+    <string name="bouton_oui">Oui</string>
+    <string name="bouton_non">Non</string>
 
 </resources>

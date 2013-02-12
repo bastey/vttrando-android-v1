@@ -1,13 +1,8 @@
 package com.bastey.randobretagne;
 
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
-import android.app.ActionBar;
-import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -26,8 +21,9 @@ import com.bastey.randobretagne.domain.Rando;
 import com.bastey.randobretagne.domain.Randos;
 import com.bastey.randobretagne.util.RandosGenerator;
 
-public class RandoListActivity extends FragmentActivity implements
-		ActionBar.TabListener {
+//public class RandoListActivity extends FragmentActivity implements
+//		ActionBar.TabListener {
+public class RandoListActivity extends FragmentActivity {
 
 	/** Sport selectionne dans la menu. */
 	private EnumTypeSport selectedSport;
@@ -51,9 +47,9 @@ public class RandoListActivity extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rando_list);
 
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-			getActionBar().setDisplayHomeAsUpEnabled(true);
-		}
+		// if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+		// getActionBar().setDisplayHomeAsUpEnabled(true);
+		// }
 
 		/** Activite est-elle appelee depuis bouton Home (Up) de l'ActionBar ? */
 		boolean isCalledFromUpButton = Boolean.valueOf((Boolean) this
@@ -76,8 +72,8 @@ public class RandoListActivity extends FragmentActivity implements
 		}
 
 		// Set up the action bar.
-		ActionBar actionBar = getActionBar();
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		// ActionBar actionBar = getActionBar();
+		// actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
 		// Filtrage des randos en fonction des donnees saisies dans l'ecran
 		// precedent
@@ -90,12 +86,12 @@ public class RandoListActivity extends FragmentActivity implements
 		// TODO HACK : Mai en dur
 		currentMonth = 6;
 		int month = currentMonth;
-		while (month < 13) {
-			actionBar.addTab(actionBar.newTab()
-					.setText(getStringResourceByName("tab" + month))
-					.setTabListener(this));
-			month++;
-		}
+		// while (month < 13) {
+		// actionBar.addTab(actionBar.newTab()
+		// .setText(getStringResourceByName("tab" + month))
+		// .setTabListener(this));
+		// month++;
+		// }
 
 	}
 
@@ -133,7 +129,8 @@ public class RandoListActivity extends FragmentActivity implements
 	/**
 	 * R�cup�ration dynamique d'une String dans "strings.xml".
 	 * 
-	 * @param aString Libelle de la chaine � r�cuperer
+	 * @param aString
+	 *            Libelle de la chaine � r�cuperer
 	 * @return Valeur
 	 */
 	private String getStringResourceByName(String aString) {
@@ -146,15 +143,15 @@ public class RandoListActivity extends FragmentActivity implements
 	@Override
 	public void onRestoreInstanceState(Bundle savedInstanceState) {
 		if (savedInstanceState.containsKey(STATE_SELECTED_NAVIGATION_ITEM)) {
-			getActionBar().setSelectedNavigationItem(
-					savedInstanceState.getInt(STATE_SELECTED_NAVIGATION_ITEM));
+//			getActionBar().setSelectedNavigationItem(
+//					savedInstanceState.getInt(STATE_SELECTED_NAVIGATION_ITEM));
 		}
 	}
 
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
-		outState.putInt(STATE_SELECTED_NAVIGATION_ITEM, getActionBar()
-				.getSelectedNavigationIndex());
+//		outState.putInt(STATE_SELECTED_NAVIGATION_ITEM, getActionBar()
+//				.getSelectedNavigationIndex());
 	}
 
 	@Override
@@ -166,54 +163,54 @@ public class RandoListActivity extends FragmentActivity implements
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case android.R.id.home:
-			// Called when the Home (Up) button is pressed in the ActionBar.
-			//NavUtils.navigateUpFromSameTask(this);
-			finish();
-			return true;
+//		case android.R.id.home:
+//			// Called when the Home (Up) button is pressed in the ActionBar.
+//			// NavUtils.navigateUpFromSameTask(this);
+//			finish();
+//			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
 
-	@Override
-	public void onTabUnselected(ActionBar.Tab tab,
-			FragmentTransaction fragmentTransaction) {
-	}
-
-	@Override
-	public void onTabSelected(ActionBar.Tab tab,
-			FragmentTransaction fragmentTransaction) {
-		// When the given tab is selected, show the tab contents in the
-		// container
-		Fragment fragment = new DummySectionFragment();
-		int selectedmonth = tab.getPosition() + currentMonth;
-
-		// Bundle args = new Bundle();
-		// args.putInt("month", tab.getPosition() + currentMonth);
-		// fragment.setArguments(args);
-
-		List<Rando> randosFilteredForTab = new ArrayList<Rando>();
-		Calendar cal = Calendar.getInstance();
-		if (randoFiltered != null) {
-			for (Rando rando : randoFiltered) {
-				cal.setTime(rando.getDate());
-				if (cal.get(Calendar.MONTH) == selectedmonth - 1) {
-					randosFilteredForTab.add(rando);
-				}
-			}
-		}
-
-		adapter = new RandoListAdapter(this, R.layout.layout_rando_list,
-				randosFilteredForTab);
-
-		getSupportFragmentManager().beginTransaction()
-				.replace(R.id.container, fragment).commit();
-	}
-
-	@Override
-	public void onTabReselected(ActionBar.Tab tab,
-			FragmentTransaction fragmentTransaction) {
-	}
+//	@Override
+//	public void onTabUnselected(ActionBar.Tab tab,
+//			FragmentTransaction fragmentTransaction) {
+//	}
+//
+//	@Override
+//	public void onTabSelected(ActionBar.Tab tab,
+//			FragmentTransaction fragmentTransaction) {
+//		// When the given tab is selected, show the tab contents in the
+//		// container
+//		Fragment fragment = new DummySectionFragment();
+//		int selectedmonth = tab.getPosition() + currentMonth;
+//
+//		// Bundle args = new Bundle();
+//		// args.putInt("month", tab.getPosition() + currentMonth);
+//		// fragment.setArguments(args);
+//
+//		List<Rando> randosFilteredForTab = new ArrayList<Rando>();
+//		Calendar cal = Calendar.getInstance();
+//		if (randoFiltered != null) {
+//			for (Rando rando : randoFiltered) {
+//				cal.setTime(rando.getDate());
+//				if (cal.get(Calendar.MONTH) == selectedmonth - 1) {
+//					randosFilteredForTab.add(rando);
+//				}
+//			}
+//		}
+//
+//		adapter = new RandoListAdapter(this, R.layout.layout_rando_list,
+//				randosFilteredForTab);
+//
+//		getSupportFragmentManager().beginTransaction()
+//				.replace(R.id.container, fragment).commit();
+//	}
+//
+//	@Override
+//	public void onTabReselected(ActionBar.Tab tab,
+//			FragmentTransaction fragmentTransaction) {
+//	}
 
 	/**
 	 * A dummy fragment representing a section of the app, but that simply
