@@ -14,7 +14,7 @@ public class RandosGenerator {
 		Rando r1 = new Rando();
 		r1.setId(20743);
 		r1.setTypeSport(EnumTypeSport.VTT);
-		r1.setDate(new GregorianCalendar(2012, GregorianCalendar.JUNE, 17)
+		r1.setDate(new GregorianCalendar(2013, GregorianCalendar.FEBRUARY, 17)
 				.getTime());
 		r1.setDepartement(56);
 		r1.setLieu("Saint GRAVE");
@@ -35,7 +35,7 @@ public class RandosGenerator {
 		r2.setId(22832);
 		r2.setTypeSport(EnumTypeSport.VTT);
 		r2.setDepartement(29);
-		r2.setDate(new GregorianCalendar(2012, GregorianCalendar.JUNE, 17)
+		r2.setDate(new GregorianCalendar(2013, GregorianCalendar.FEBRUARY, 19)
 				.getTime());
 		r2.setNom("LE TOUR DU MENEZ-HOM");
 		r2.setSiteWeb("www.kempervtt.fr");
@@ -55,7 +55,7 @@ public class RandosGenerator {
 		r3.setId(22546);
 		r3.setTypeSport(EnumTypeSport.VTT);
 		r3.setDepartement(35);
-		r3.setDate(new GregorianCalendar(2012, GregorianCalendar.JULY, 1)
+		r3.setDate(new GregorianCalendar(2013, GregorianCalendar.FEBRUARY, 28)
 				.getTime());
 		r3.setNom("LA BRETAGNEVTT");
 		r3.setSiteWeb("www.bretagnevtt.com");
@@ -75,7 +75,7 @@ public class RandosGenerator {
 		r4.setId(21954);
 		r4.setTypeSport(EnumTypeSport.VTT);
 		r4.setDepartement(56);
-		r4.setDate(new GregorianCalendar(2012, GregorianCalendar.JUNE, 24)
+		r4.setDate(new GregorianCalendar(2013, GregorianCalendar.MARCH, 24)
 				.getTime());
 		r4.setNom("La vallée du sedon rando et raid vtt");
 		r4.setSiteWeb("vttrando.free.fr/guegon/");
@@ -95,7 +95,7 @@ public class RandosGenerator {
 		r5.setId(23014);
 		r5.setTypeSport(EnumTypeSport.VTT);
 		r5.setDepartement(29);
-		r5.setDate(new GregorianCalendar(2012, GregorianCalendar.JUNE, 17)
+		r5.setDate(new GregorianCalendar(2013, GregorianCalendar.MARCH, 1)
 				.getTime());
 		r5.setNom("Rando VTT et Pédestre.");
 		r5.setSiteWeb("vtt-coat-meal.over-blog.com/");
@@ -115,7 +115,7 @@ public class RandosGenerator {
 		r6.setId(24718);
 		r6.setTypeSport(EnumTypeSport.VTT);
 		r6.setDepartement(44);
-		r6.setDate(new GregorianCalendar(2012, GregorianCalendar.JULY, 14)
+		r6.setDate(new GregorianCalendar(2013, GregorianCalendar.APRIL, 14)
 				.getTime());
 		r6.setNom("rando vtt et cyclo");
 		r6.setSiteWeb("");
@@ -135,7 +135,7 @@ public class RandosGenerator {
 		r7.setId(23490);
 		r7.setTypeSport(EnumTypeSport.VTT);
 		r7.setDepartement(35);
-		r7.setDate(new GregorianCalendar(2012, GregorianCalendar.JUNE, 23)
+		r7.setDate(new GregorianCalendar(2013, GregorianCalendar.APRIL, 23)
 				.getTime());
 		r7.setNom("24Heures VTT de la valière (9ème édition)");
 		r7.setSiteWeb("www.vttpaysdevitre.org");
@@ -155,7 +155,7 @@ public class RandosGenerator {
 		r8.setId(20794);
 		r8.setTypeSport(EnumTypeSport.VTT);
 		r8.setDepartement(56);
-		r8.setDate(new GregorianCalendar(2012, GregorianCalendar.AUGUST, 15)
+		r8.setDate(new GregorianCalendar(2013, GregorianCalendar.APRIL, 28)
 				.getTime());
 		r8.setNom("LA GACELINETTE");
 		r8.setSiteWeb("");
@@ -175,7 +175,7 @@ public class RandosGenerator {
 		r9.setId(29856);
 		r9.setTypeSport(EnumTypeSport.CYCLO);
 		r9.setDepartement(35);
-		r9.setDate(new GregorianCalendar(2012, GregorianCalendar.JUNE, 23)
+		r9.setDate(new GregorianCalendar(2013, GregorianCalendar.FEBRUARY, 23)
 				.getTime());
 		r9.setNom("24Heures Cyclo de la valière (9ème édition)");
 		r9.setSiteWeb("www.cyclopaysdevitre.org");
@@ -195,7 +195,7 @@ public class RandosGenerator {
 		r10.setId(59865);
 		r10.setTypeSport(EnumTypeSport.MARCHE);
 		r10.setDepartement(56);
-		r10.setDate(new GregorianCalendar(2012, GregorianCalendar.AUGUST, 15)
+		r10.setDate(new GregorianCalendar(2013, GregorianCalendar.FEBRUARY, 15)
 				.getTime());
 		r10.setNom("LA GACELINETTE");
 		r10.setSiteWeb("");

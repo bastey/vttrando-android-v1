@@ -17,9 +17,9 @@ import com.actionbarsherlock.view.MenuItem;
 import com.bastey.randobretagne.domain.EnumTypeSport;
 
 /**
- * Page d'accueil de l'application Rando Bretagne.
+ * Page d'accueil de l'application Rando BZH.
  */
-public class RandoHome extends SherlockActivity {
+public class RandoHomeActivity extends SherlockActivity {
 
 	/** Composants définis dans la vue. */
 	private RadioButton radioVTT, radioCyclo, radioMarche;

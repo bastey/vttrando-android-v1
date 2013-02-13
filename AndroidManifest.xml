@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bastey.randobretagne"
     android:versionCode="1"
@@ -12,7 +13,7 @@
         android:label="@string/app_name"
         android:theme="@style/Theme.Sherlock" >
         <activity
-            android:name="com.bastey.randobretagne.RandoHome"
+            android:name="com.bastey.randobretagne.RandoHomeActivity"
             android:label="@string/title_activity_home" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,27 +21,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--<activity
-            android:name=".RandoListActivity"
+        
+        <activity
+            android:name="com.bastey.randobretagne.RandoListActivity"
             android:label="@string/title_activity_rando_list" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bastey.vttrandotest.RandoMenu" />
-        </activity>-->
-        <!-- <activity
-            android:name=".RandoListViewLoader"
-            android:label="@string/title_activity_rando_list_view_loader" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bastey.randobretagne.RandoListActivity" />
-        </activity>-->
-        <!--<activity
+                android:value="com.bastey.randobretagne.RandoHomeActivity" />
+        </activity>
+        <activity
             android:name=".RandoDetailActivity"
             android:label="@string/title_activity_rando_detail" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bastey.randobretagne.RandoListActivity" />
-        </activity>-->
+        </activity>
     </application>
 
 </manifest>

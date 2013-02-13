@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
+import com.bastey.randobretagne.R;
 import com.bastey.randobretagne.domain.Rando;
 
 /**
@@ -42,15 +44,15 @@ public class RandoListAdapter extends ArrayAdapter<Rando> {
 
 		Rando o = randos.get(position);
 		if (o != null) {
-//			TextView tvDate = (TextView) v.findViewById(R.id.tvDate);
-//			tvDate.setText(o.getDateStr());
-//
-//			TextView tvNom = (TextView) v.findViewById(R.id.tvNom);
-//			tvNom.setText(o.getNom());
-//
-//			TextView tvLieu = (TextView) v.findViewById(R.id.tvDptLieu);
-//			String lieu = o.getDepartement() + " - " + o.getLieu();
-//			tvLieu.setText(lieu);
+			TextView tvDate = (TextView) v.findViewById(R.id.tvDate);
+			tvDate.setText(o.getDateStr());
+
+			TextView tvNom = (TextView) v.findViewById(R.id.tvNom);
+			tvNom.setText(o.getNom());
+
+			TextView tvLieu = (TextView) v.findViewById(R.id.tvDptLieu);
+			String lieu = o.getDepartement() + " - " + o.getLieu();
+			tvLieu.setText(lieu);
 
 		}
 		if (position % 2 != 0) {
