@@ -16,7 +16,7 @@
                 android:id="@+id/label_titre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="3dp"
                 android:gravity="center_horizontal"
                 android:text="@string/label_titreHome"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -62,7 +62,6 @@
 
 
             <!-- BEGIN - Checkbox Departements -->
-
             <TextView
                 android:id="@+id/label_dpts"
                 android:layout_width="wrap_content"
@@ -198,7 +197,7 @@
                 android:id="@+id/buttonRandoList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:onClick="openRandoListView"
                 android:text="@string/bouton_listRandos" />
         </LinearLayout>
