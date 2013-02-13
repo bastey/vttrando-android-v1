@@ -1,15 +1,5 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar"> -->
-    <style name="AppTheme" parent="android:Theme.Light">
-        <!-- <item name="android:actionBarStyle">@style/RandoListActionBar</item> -->
-    </style>
-
-<!--   <style name="RandoListActionBar" parent="@android:style/Widget.Holo.ActionBar">
-        <item name="android:background">@drawable/ab_background</item>
-        <item name="android:backgroundStacked">@drawable/ab_background</item>
-        <item name="android:backgroundSplit">@drawable/ab_split_background</item>
-        <item name="android:clickColor">@android:color/holo_blue_light</item>
-    </style> -->
+    <!-- <style name="AppTheme" parent="android:Theme.Light"/> -->
 
 </resources>

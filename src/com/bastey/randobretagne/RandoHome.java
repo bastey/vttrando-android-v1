@@ -1,25 +1,25 @@
 package com.bastey.randobretagne;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 import com.bastey.randobretagne.domain.EnumTypeSport;
 
 /**
  * Page d'accueil de l'application Rando Bretagne.
  */
-public class RandoHome extends Activity {
+public class RandoHome extends SherlockActivity {
 
 	/** Composants définis dans la vue. */
 	private RadioButton radioVTT, radioCyclo, radioMarche;
@@ -31,6 +31,7 @@ public class RandoHome extends Activity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 
@@ -43,12 +44,11 @@ public class RandoHome extends Activity {
 		dpt35 = (CheckBox) this.findViewById(R.id.checkBox_dpt35);
 		dpt56 = (CheckBox) this.findViewById(R.id.checkBox_dpt56);
 		dpt44 = (CheckBox) this.findViewById(R.id.checkBox_dpt44);
-
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.activity_home, menu);
+		getSupportMenuInflater().inflate(R.menu.activity_home, menu);
 		return true;
 	}
 
@@ -107,7 +107,6 @@ public class RandoHome extends Activity {
 					Toast.LENGTH_SHORT);
 			msg.setGravity(Gravity.CENTER, 15, 15);
 			msg.show();
-
 		}
 	}
 
@@ -115,27 +114,34 @@ public class RandoHome extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.menu_exit:
-
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setMessage(R.string.dialog_msg_exit);
-			builder.setCancelable(false);
-			builder.setPositiveButton("Oui", new OnClickListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					dialog.cancel();
-					finish();
-				}
-			});
-			builder.setNegativeButton("Non", new OnClickListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					dialog.cancel();
-				}
-			});
-			builder.create().show();
-
+			showExitDialog();
 			return true;
 		}
+
 		return super.onOptionsItemSelected(item);
 	}
+	
+	/**
+	 * Affiche la popup de demande de confirmation pour quitter l'application
+	 */
+	private void showExitDialog(){
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setMessage(R.string.dialog_msg_exit);
+		builder.setCancelable(false);
+		builder.setPositiveButton("Oui", new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.cancel();
+				finish();
+			}
+		});
+		builder.setNegativeButton("Non", new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.cancel();
+			}
+		});
+		builder.create().show();
+	}
+	
 }

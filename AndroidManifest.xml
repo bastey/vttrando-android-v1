@@ -10,7 +10,7 @@
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.Sherlock" >
         <activity
             android:name="com.bastey.randobretagne.RandoHome"
             android:label="@string/title_activity_home" >
@@ -20,41 +20,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
+        <!--<activity
             android:name=".RandoListActivity"
             android:label="@string/title_activity_rando_list" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bastey.vttrandotest.RandoMenu" />
-        </activity>
-        <activity
+        </activity>-->
+        <!-- <activity
             android:name=".RandoListViewLoader"
             android:label="@string/title_activity_rando_list_view_loader" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bastey.randobretagne.RandoListActivity" />
-        </activity>
-        <activity
+        </activity>-->
+        <!--<activity
             android:name=".RandoDetailActivity"
             android:label="@string/title_activity_rando_detail" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bastey.randobretagne.RandoListActivity" />
-        </activity>
-        <activity
-            android:name=".TestActivity"
-            android:label="@string/title_activity_test" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bastey.randobretagne.RandoListActivity" />
-        </activity>
-        <activity
-            android:name=".TestActivity_ListChild"
-            android:label="@string/title_activity_test_activity__list_child" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bastey.randobretagne.RandoListActivity" />
-        </activity>
+        </activity>-->
     </application>
 
 </manifest>
