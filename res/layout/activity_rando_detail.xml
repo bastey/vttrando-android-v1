@@ -1,277 +1,285 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/tableau_detail_rando"
+
+	<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="3dp"
-        android:layout_marginRight="6dp"
-        android:layout_marginTop="6dp" >
-
-        <TableRow
-            android:id="@+id/tableRow_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" >
-
-            <TextView
-                android:id="@+id/detail_date_Label"
-                android:layout_width="0dp"
-                android:layout_marginLeft="3dp"
-                android:layout_weight="1"
-                android:text="@string/label_date"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/detail_date_valeur"
-                android:layout_width="0dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_weight="2" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow_dpt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/detail_departement_label"
-                android:layout_width="0dp"
-                android:layout_marginLeft="3dp"
-                android:layout_weight="1"
-                android:text="@string/label_dpt"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/detail_departement_valeur"
-                android:layout_width="0dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_weight="2" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow_lieu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/detail_lieu_label"
-                android:layout_width="0dp"
-                android:layout_marginLeft="3dp"
-                android:layout_weight="1"
-                android:text="@string/label_lieu"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/detail_lieu_valeur"
-                android:layout_width="0dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_weight="2" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow_nom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/detail_nom_label"
-                android:layout_width="0dp"
-                android:layout_marginLeft="3dp"
-                android:layout_weight="1"
-                android:text="@string/label_nom"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/detail_nom_valeur"
-                android:layout_width="0dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_weight="2" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow_organisateur"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/detail_orga_label"
-                android:layout_width="0dp"
-                android:layout_marginLeft="3dp"
-                android:layout_weight="1"
-                android:text="@string/label_orga"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/detail_orga_valeur"
-                android:layout_width="0dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_weight="2" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow_lieuRdv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/detail_lieu_rdv_label"
-                android:layout_width="0dp"
-                android:layout_marginLeft="3dp"
-                android:layout_weight="1"
-                android:text="@string/label_rdv"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/detail_lieu_rdv_valeur"
-                android:layout_width="0dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_weight="2" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow_horaire"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/detail_horaire_label"
-                android:layout_width="0dp"
-                android:layout_marginLeft="3dp"
-                android:layout_weight="1"
-                android:text="@string/label_horaire"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/detail_horaire_valeur"
-                android:layout_width="0dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_weight="2" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow_siteWeb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/detail_site_web_label"
-                android:layout_width="0dp"
-                android:layout_marginLeft="3dp"
-                android:layout_weight="1"
-                android:text="@string/label_site"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/detail_site_web_valeur"
-                android:layout_width="0dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_weight="2" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow_prixPublic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/detail_prix_public_label"
-                android:layout_width="0dp"
-                android:layout_marginLeft="3dp"
-                android:layout_weight="1"
-                android:text="@string/label_prixP"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/detail_prix_public_valeur"
-                android:layout_width="0dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_weight="2" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow_prixClub"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/detail_prix_club_label"
-                android:layout_width="0dp"
-                android:layout_marginLeft="3dp"
-                android:layout_weight="1"
-                android:text="@string/label_prixC"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/detail_prix_club_valeur"
-                android:layout_width="0dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_weight="2" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow_contact"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/detail_contact_label"
-                android:layout_width="0dp"
-                android:layout_marginLeft="3dp"
-                android:layout_weight="1"
-                android:text="@string/label_contact"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/detail_contact_valeur"
-                android:layout_width="0dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_weight="2" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/detail_description_label"
-                android:layout_width="0dp"
-                android:layout_marginLeft="3dp"
-                android:layout_weight="1"
-                android:text="@string/label_desc"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/detail_description_valeur"
-                android:layout_width="0dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_weight="2" />
-        </TableRow>
-    </TableLayout>
+        android:layout_alignParentLeft="true"
+	    android:layout_alignParentRight="true"
+        android:scrollbars="vertical" >
+    
+	    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	        android:id="@+id/tableau_detail_rando"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="3dp"
+	        android:layout_marginRight="6dp"
+	        android:layout_marginTop="6dp" >
+	
+	        <TableRow
+	            android:id="@+id/tableRow_date"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginTop="10dp" >
+	
+	            <TextView
+	                android:id="@+id/detail_date_Label"
+	                android:layout_width="0dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_weight="1"
+	                android:text="@string/label_date"
+	                android:textStyle="bold" />
+	
+	            <TextView
+	                android:id="@+id/detail_date_valeur"
+	                android:layout_width="0dp"
+	                android:layout_marginTop="3dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_marginRight="3dp"
+	                android:layout_weight="2" />
+	        </TableRow>
+	
+	        <TableRow
+	            android:id="@+id/tableRow_dpt"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+	
+	            <TextView
+	                android:id="@+id/detail_departement_label"
+	                android:layout_width="0dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_weight="1"
+	                android:text="@string/label_dpt"
+	                android:textStyle="bold" />
+	
+	            <TextView
+	                android:id="@+id/detail_departement_valeur"
+	                android:layout_width="0dp"
+	                android:layout_marginTop="3dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_marginRight="3dp"
+	                android:layout_weight="2" />
+	        </TableRow>
+	
+	        <TableRow
+	            android:id="@+id/tableRow_lieu"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+	
+	            <TextView
+	                android:id="@+id/detail_lieu_label"
+	                android:layout_width="0dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_weight="1"
+	                android:text="@string/label_lieu"
+	                android:textStyle="bold" />
+	
+	            <TextView
+	                android:id="@+id/detail_lieu_valeur"
+	                android:layout_width="0dp"
+	                android:layout_marginTop="3dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_marginRight="3dp"
+	                android:layout_weight="2" />
+	        </TableRow>
+	
+	        <TableRow
+	            android:id="@+id/tableRow_nom"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+	
+	            <TextView
+	                android:id="@+id/detail_nom_label"
+	                android:layout_width="0dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_weight="1"
+	                android:text="@string/label_nom"
+	                android:textStyle="bold" />
+	
+	            <TextView
+	                android:id="@+id/detail_nom_valeur"
+	                android:layout_width="0dp"
+	                android:layout_marginTop="3dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_marginRight="3dp"
+	                android:layout_weight="2" />
+	        </TableRow>
+	
+	        <TableRow
+	            android:id="@+id/tableRow_organisateur"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+	
+	            <TextView
+	                android:id="@+id/detail_orga_label"
+	                android:layout_width="0dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_weight="1"
+	                android:text="@string/label_orga"
+	                android:textStyle="bold" />
+	
+	            <TextView
+	                android:id="@+id/detail_orga_valeur"
+	                android:layout_width="0dp"
+	                android:layout_marginTop="3dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_marginRight="3dp"
+	                android:layout_weight="2" />
+	        </TableRow>
+	
+	        <TableRow
+	            android:id="@+id/tableRow_lieuRdv"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+	
+	            <TextView
+	                android:id="@+id/detail_lieu_rdv_label"
+	                android:layout_width="0dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_weight="1"
+	                android:text="@string/label_rdv"
+	                android:textStyle="bold" />
+	
+	            <TextView
+	                android:id="@+id/detail_lieu_rdv_valeur"
+	                android:layout_width="0dp"
+	                android:layout_marginTop="3dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_marginRight="3dp"
+	                android:layout_weight="2" />
+	        </TableRow>
+	
+	        <TableRow
+	            android:id="@+id/tableRow_horaire"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+	
+	            <TextView
+	                android:id="@+id/detail_horaire_label"
+	                android:layout_width="0dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_weight="1"
+	                android:text="@string/label_horaire"
+	                android:textStyle="bold" />
+	
+	            <TextView
+	                android:id="@+id/detail_horaire_valeur"
+	                android:layout_width="0dp"
+	                android:layout_marginTop="3dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_marginRight="3dp"
+	                android:layout_weight="2" />
+	        </TableRow>
+	
+	        <TableRow
+	            android:id="@+id/tableRow_siteWeb"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+	
+	            <TextView
+	                android:id="@+id/detail_site_web_label"
+	                android:layout_width="0dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_weight="1"
+	                android:text="@string/label_site"
+	                android:textStyle="bold" />
+	
+	            <TextView
+	                android:id="@+id/detail_site_web_valeur"
+	                android:layout_width="0dp"
+	                android:layout_marginTop="3dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_marginRight="3dp"
+	                android:layout_weight="2" />
+	        </TableRow>
+	
+	        <TableRow
+	            android:id="@+id/tableRow_prixPublic"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+	
+	            <TextView
+	                android:id="@+id/detail_prix_public_label"
+	                android:layout_width="0dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_weight="1"
+	                android:text="@string/label_prixP"
+	                android:textStyle="bold" />
+	
+	            <TextView
+	                android:id="@+id/detail_prix_public_valeur"
+	                android:layout_width="0dp"
+	                android:layout_marginTop="3dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_marginRight="3dp"
+	                android:layout_weight="2" />
+	        </TableRow>
+	
+	        <TableRow
+	            android:id="@+id/tableRow_prixClub"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+	
+	            <TextView
+	                android:id="@+id/detail_prix_club_label"
+	                android:layout_width="0dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_weight="1"
+	                android:text="@string/label_prixC"
+	                android:textStyle="bold" />
+	
+	            <TextView
+	                android:id="@+id/detail_prix_club_valeur"
+	                android:layout_width="0dp"
+	                android:layout_marginTop="3dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_marginRight="3dp"
+	                android:layout_weight="2" />
+	        </TableRow>
+	
+	        <TableRow
+	            android:id="@+id/tableRow_contact"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+	
+	            <TextView
+	                android:id="@+id/detail_contact_label"
+	                android:layout_width="0dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_weight="1"
+	                android:text="@string/label_contact"
+	                android:textStyle="bold" />
+	
+	            <TextView
+	                android:id="@+id/detail_contact_valeur"
+	                android:layout_width="0dp"
+	                android:layout_marginTop="3dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_marginRight="3dp"
+	                android:layout_weight="2" />
+	        </TableRow>
+	
+	        <TableRow
+	            android:id="@+id/tableRow_description"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+	
+	            <TextView
+	                android:id="@+id/detail_description_label"
+	                android:layout_width="0dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_weight="1"
+	                android:text="@string/label_desc"
+	                android:textStyle="bold" />
+	
+	            <TextView
+	                android:id="@+id/detail_description_valeur"
+	                android:layout_width="0dp"
+	                android:layout_marginTop="3dp"
+	                android:layout_marginLeft="3dp"
+	                android:layout_marginRight="3dp"
+	                android:layout_weight="2" />
+	        </TableRow>
+	    </TableLayout>
+    
+    </ScrollView>

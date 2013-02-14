@@ -516,7 +516,7 @@ public class RandosGenerator {
 		r36.setId(36536);
 		r36.setTypeSport(EnumTypeSport.VTT);
 		r36.setDepartement(56);
-		r36.setDate(new GregorianCalendar(3613, GregorianCalendar.MARCH, 31)
+		r36.setDate(new GregorianCalendar(3613, GregorianCalendar.MARCH, 30)
 				.getTime());
 		r36.setNom("La vallée du sedon");
 		r36.setSiteWeb("vttrando.free.fr/guegon/");
@@ -536,7 +536,7 @@ public class RandosGenerator {
 		r37.setId(37537);
 		r37.setTypeSport(EnumTypeSport.VTT);
 		r37.setDepartement(56);
-		r37.setDate(new GregorianCalendar(3713, GregorianCalendar.MARCH, 33)
+		r37.setDate(new GregorianCalendar(3713, GregorianCalendar.MARCH, 30)
 				.getTime());
 		r37.setNom("La vallée du sedon rando et raid vtt");
 		r37.setSiteWeb("vttrando.free.fr/guegon/");
@@ -556,7 +556,7 @@ public class RandosGenerator {
 		r38.setId(38538);
 		r38.setTypeSport(EnumTypeSport.VTT);
 		r38.setDepartement(56);
-		r38.setDate(new GregorianCalendar(3813, GregorianCalendar.MARCH, 33)
+		r38.setDate(new GregorianCalendar(3813, GregorianCalendar.MARCH, 30)
 				.getTime());
 		r38.setNom("La vallée du sedon rando et raid vtt");
 		r38.setSiteWeb("vttrando.free.fr/guegon/");
@@ -576,7 +576,7 @@ public class RandosGenerator {
 		r39.setId(39539);
 		r39.setTypeSport(EnumTypeSport.VTT);
 		r39.setDepartement(56);
-		r39.setDate(new GregorianCalendar(3913, GregorianCalendar.MARCH, 34)
+		r39.setDate(new GregorianCalendar(3913, GregorianCalendar.MARCH, 31)
 				.getTime());
 		r39.setNom("La vallée du sedon");
 		r39.setSiteWeb("vttrando.free.fr/guegon/");
@@ -587,7 +587,7 @@ public class RandosGenerator {
 		r39.setPrixPublic("5 euros vtt pour la rando * 9? pour le raid inscription sur le site internet * 13? sur place * 3.50 euros marche");
 		r39.setPrixClub("");
 		r39.setLieuRdv("Complexe Sportif");
-		r39.setDescription("Raid VTT de 80 km avec réservation sur http://vttrando.free.fr/guegon/ * Rando VTT de 39, 39, 31, 390 et 395 * Pédestre de 13, 15 et 17 km");
+		r39.setDescription("Raid VTT de 80 km avec réservation sur http://vttrando.free.fr/guegon/ * Rando VTT de 39, 39, 31, 390 et 395 * Pédestre de 13, 15 et 17 km Raid VTT de 80 km avec réservation sur http://vttrando.free.fr/guegon/ * Rando VTT de 39, 39, 31, 390 et 395 * Pédestre de 13, 15 et 17 km Raid VTT de 80 km avec réservation sur http://vttrando.free.fr/guegon/ * Rando VTT de 39, 39, 31, 390 et 395 * Pédestre de 13, 15 et 17 km Raid VTT de 80 km avec réservation sur http://vttrando.free.fr/guegon/ * Rando VTT de 39, 39, 31, 390 et 395 * Pédestre de 13, 15 et 17 km Raid VTT de 80 km avec réservation sur http://vttrando.free.fr/guegon/ * Rando VTT de 39, 39, 31, 390 et 395 * Pédestre de 13, 15 et 17 km Raid VTT de 80 km avec réservation sur http://vttrando.free.fr/guegon/ * Rando VTT de 39, 39, 31, 390 et 395 * Pédestre de 13, 15 et 17 km");
 		r39.setUrlDetailWeb("http://www.nafix.fr/sorties/vtt-3913/fiche-la-vallee-du-sedon-rando-et-raid-vtt-399539-1.html");
 		randos.add(r39);
 

@@ -202,4 +202,3 @@
                 android:text="@string/bouton_listRandos" />
         </LinearLayout>
     </ScrollView>
-
