@@ -16,7 +16,7 @@
     <string name="title_activity_rando_list">Randonnées</string>
     <string name="bouton_listRandos">Randonnées</string>
     <string name="msg_choisir_dpt">Veuillez sélectionner au moins 1 département pour continuer</string>
-    <string name="label_titreHome">Le calendrier des randonnées en Bretagne</string>
+    <string name="label_titreHome">Le calendrier des randonnées bretonnes</string>
     <string name="label_sports">Sports :</string>
     <string name="label_departements">Départements :</string>
 

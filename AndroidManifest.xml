@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.bastey.randobretagne"
+    package="com.bastey.randobzh"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -13,7 +13,7 @@
         android:label="@string/app_name"
         android:theme="@style/Theme.Sherlock" >
         <activity
-            android:name="com.bastey.randobretagne.RandoHomeActivity"
+            android:name="com.bastey.randobzh.RandoBZH"
             android:label="@string/title_activity_home" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,18 +23,18 @@
         </activity>
         
         <activity
-            android:name="com.bastey.randobretagne.RandoListActivity"
+            android:name="com.bastey.randobzh.RandoListActivity"
             android:label="@string/title_activity_rando_list" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bastey.randobretagne.RandoHomeActivity" />
+                android:value="com.bastey.randobzh.RandoHomeActivity" />
         </activity>
         <activity
-            android:name=".RandoDetailActivity"
+            android:name="com.bastey.randobzh.RandoDetailActivity"
             android:label="@string/title_activity_rando_detail" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bastey.randobretagne.RandoListActivity" />
+                android:value="com.bastey.randobzh.RandoListActivity" />
         </activity>
     </application>
 

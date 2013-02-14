@@ -1,4 +1,4 @@
-package com.bastey.randobretagne;
+package com.bastey.randobzh;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -7,12 +7,11 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import com.bastey.randobretagne.domain.Rando;
+import com.bastey.randobzh.R;
+import com.bastey.randobzh.domain.Rando;
 
 /**
- * Activite detail d'une randonnee.
- * 
- * @author bastey
+ * Détail d'une randonnee.
  * 
  */
 public class RandoDetailActivity extends SherlockActivity {
@@ -20,6 +19,7 @@ public class RandoDetailActivity extends SherlockActivity {
 	private TextView date, departement, lieu, nom, organisateur, lieu_rdv,
 			horaire, site_web, prix_public, prix_club, contact, description;
 
+	/** La rando à afficher. */
 	private Rando selectedRando;
 
 	@Override
@@ -30,9 +30,11 @@ public class RandoDetailActivity extends SherlockActivity {
 		ActionBar ab = getSupportActionBar();
 		ab.setDisplayHomeAsUpEnabled(true);
 
+		// On recupere la rando
 		Bundle args = getIntent().getExtras();
 		selectedRando = args.getParcelable("rando");
 
+		// On affiche les donnees de la rando
 		date = (TextView) this.findViewById(R.id.detail_date_valeur);
 		date.setText(selectedRando.getDateStr());
 
@@ -81,13 +83,11 @@ public class RandoDetailActivity extends SherlockActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// switch (item.getItemId()) {
-		// case android.R.id.home:
-		// // Called when the Home (Up) button is pressed in the ActionBar.
-		// finish();
-		// // onBackPressed(); //pour simuler un retour simple
-		// return true;
-		// }
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			finish();
+			return true;
+		}
 		return super.onOptionsItemSelected(item);
 	}
 

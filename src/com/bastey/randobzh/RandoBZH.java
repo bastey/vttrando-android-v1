@@ -1,4 +1,4 @@
-package com.bastey.randobretagne;
+package com.bastey.randobzh;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -14,12 +14,13 @@ import android.widget.Toast;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import com.bastey.randobretagne.domain.EnumTypeSport;
+import com.bastey.randobzh.R;
+import com.bastey.randobzh.domain.EnumTypeSport;
 
 /**
  * Page d'accueil de l'application Rando BZH.
  */
-public class RandoHomeActivity extends SherlockActivity {
+public class RandoBZH extends SherlockActivity {
 
 	/** Composants définis dans la vue. */
 	private RadioButton radioVTT, radioCyclo, radioMarche;
