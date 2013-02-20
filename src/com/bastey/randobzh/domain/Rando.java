@@ -129,7 +129,7 @@ public class Rando implements Comparable<Rando>, Parcelable {
 	/**
 	 * @return the date au format dd/MM/yyyy
 	 */
-	private String getDateStrDetail() {
+	public String getDateStrDetail() {
 		return sdf.format(date);
 	}
 

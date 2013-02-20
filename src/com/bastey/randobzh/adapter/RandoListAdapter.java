@@ -22,7 +22,6 @@ public class RandoListAdapter extends ArrayAdapter<Rando> {
 
 	List<Rando> randos;
 	int viewRes;
-	//final int backgroundLineColor = Color.rgb(211, 247, 163);
 
 	public RandoListAdapter(Context context, int textViewResourceId,
 			List<Rando> pRandos) {
@@ -54,9 +53,6 @@ public class RandoListAdapter extends ArrayAdapter<Rando> {
 			tvLieu.setText(lieu);
 
 		}
-//		if (position % 2 != 0) {
-//			v.setBackgroundColor(backgroundLineColor);
-//		}
 
 		return v;
 	}

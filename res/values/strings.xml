@@ -35,7 +35,6 @@
     <string name="tab10">Octobre</string>
     <string name="tab11">Novembre</string>
     <string name="tab12">Décembre</string>
-    <string name="title_activity_rando_list_view_loader">RandoListViewLoader</string>
 
     <!-- Page Detail de rando -->
     <string name="title_activity_rando_detail">Détail de la rando</string>
@@ -51,9 +50,6 @@
     <string name="label_prixC">Prix club : </string>
     <string name="label_contact">Contact : </string>
     <string name="label_desc">Description : </string>
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_test">TestActivity</string>
-    <string name="title_activity_test_activity__list_child">TestActivity_ListChild</string>
     
     <!-- Menus -->
     <string name="menu_exit">Sortir</string>

@@ -7,6 +7,7 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
+import com.bastey.randobzh.domain.EnumTypeSport;
 import com.bastey.randobzh.domain.Rando;
 
 /**
@@ -34,9 +35,18 @@ public class RandoDetailActivity extends SherlockActivity {
 		Bundle args = getIntent().getExtras();
 		selectedRando = args.getParcelable("rando");
 
+		// Modification du titre en fct du sport selectionne
+		if (EnumTypeSport.VTT.equals(selectedRando.getTypeSport())) {
+			ab.setTitle("Détail de la rando VTT");
+		} else if (EnumTypeSport.CYCLO.equals(selectedRando.getTypeSport())) {
+			ab.setTitle("Détail de la rando Cyclo");
+		} else if (EnumTypeSport.MARCHE.equals(selectedRando.getTypeSport())) {
+			ab.setTitle("Détail de la rando Pédestres");
+		}
+
 		// On affiche les donnees de la rando
 		date = (TextView) this.findViewById(R.id.detail_date_valeur);
-		date.setText(selectedRando.getDateStr());
+		date.setText(selectedRando.getDateStrDetail());
 
 		departement = (TextView) this
 				.findViewById(R.id.detail_departement_valeur);

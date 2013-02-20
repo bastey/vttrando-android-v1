@@ -38,7 +38,6 @@ public class ParserDetailRando {
 		Rando rando = null;
 
 		try {
-
 			// Connexion à l'URL du detail de la rando
 			Document doc = Jsoup.connect(randoTemp.getUrlDetailWeb()).get();
 
@@ -87,7 +86,11 @@ public class ParserDetailRando {
 			// Le Site Web de la sortie
 			try {
 				String siteWeb = bodyData.getElementById("txt_ref_int_site")
-						.childNode(1).childNode(0).toString();
+						.select("a[href]").attr("href");
+				if (!TextUtils.isEmpty(siteWeb)) {
+					siteWeb.trim();
+				}
+
 				rando.setSiteWeb(Html.fromHtml(siteWeb).toString());
 			} catch (IndexOutOfBoundsException e) {
 				// Possible si la donnees n'est pas remplie
