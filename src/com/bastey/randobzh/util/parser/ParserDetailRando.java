@@ -9,6 +9,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
+import android.text.Html;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.bastey.randobzh.domain.Rando;
@@ -25,7 +27,8 @@ public class ParserDetailRando {
 			Locale.FRANCE);
 
 	/**
-	 * Permet de parser une page HTML de detail d'une rando
+	 * Permet de parser une page HTML de detail d'une rando.<br>
+	 * Les caracteres HTML sont convertis avec la methode Html.fromHtml(String).
 	 * 
 	 * @param randoTemp
 	 *            La rando temporaire dont les details sont a recuperer
@@ -35,6 +38,8 @@ public class ParserDetailRando {
 		Rando rando = null;
 
 		try {
+
+			// Connexion à l'URL du detail de la rando
 			Document doc = Jsoup.connect(randoTemp.getUrlDetailWeb()).get();
 
 			rando = randoTemp;
@@ -45,102 +50,132 @@ public class ParserDetailRando {
 			// Dans le sous element "centrer_pg", on recupere
 			Element bodyData = body.getElementById("centrer_pg");
 
-			// La Date
+			// La Reference (Champ obligatoire)
+			try {
+				String id = bodyData.getElementById("txt_ref_int_annonce")
+						.childNode(3).childNode(0).toString();
+				rando.setId(Integer.valueOf(id));
+			} catch (IndexOutOfBoundsException e) {
+				// Champ obligatoire
+				return null;
+			}
+
+			// La Date (Champ obligatoire)
 			try {
 				rando.setDate(sdf.parse(bodyData
 						.getElementById("txt_ref_int_date").childNode(1)
 						.childNode(0).toString()));
 			} catch (IndexOutOfBoundsException e) {
-				// Possible si la donnees n'est pas remplie
+				// Champ obligatoire
+				return null;
 			}
 
-			// Le Lieu
+			// Le Lieu (Champ obligatoire)
 			try {
-				rando.setLieu(bodyData.getElementById("txt_ref_int_lieu")
-						.childNode(4).childNode(0).toString());
+				String lieu = bodyData.getElementById("txt_ref_int_lieu")
+						.childNode(4).childNode(0).toString();
+				rando.setLieu(Html.fromHtml(lieu).toString());
+				if (TextUtils.isEmpty(lieu)) {
+					// Champ obligatoire
+					return null;
+				}
 			} catch (IndexOutOfBoundsException e) {
-				// Possible si la donnees n'est pas remplie
+				// Champ obligatoire
+				return null;
 			}
 
 			// Le Site Web de la sortie
 			try {
-				rando.setSiteWeb(bodyData.getElementById("txt_ref_int_site")
-						.childNode(1).childNode(0).toString());
+				String siteWeb = bodyData.getElementById("txt_ref_int_site")
+						.childNode(1).childNode(0).toString();
+				rando.setSiteWeb(Html.fromHtml(siteWeb).toString());
 			} catch (IndexOutOfBoundsException e) {
 				// Possible si la donnees n'est pas remplie
 			}
 
 			// Les Horaires
 			try {
-				rando.setHoraires(bodyData
+				String horaires = bodyData
 						.getElementById("txt_ref_int_horaires").childNode(2)
-						.childNode(0).toString());
+						.childNode(0).toString();
+				rando.setHoraires(Html.fromHtml(horaires).toString());
 			} catch (IndexOutOfBoundsException e) {
 				// Possible si la donnees n'est pas remplie
 			}
 
-			// Le Nom de la rando
+			// Le Nom de la rando (Champ obligatoire)
 			try {
-				rando.setNom(bodyData.getElementById("txt_ref_int_nom")
-						.childNode(2).childNode(0).toString());
+				String nom = bodyData.getElementById("txt_ref_int_nom")
+						.childNode(2).childNode(0).toString();
+				rando.setNom(Html.fromHtml(nom).toString());
+				if (TextUtils.isEmpty(nom)) {
+					// Champ obligatoire
+					return null;
+				}
 			} catch (IndexOutOfBoundsException e) {
-				// Possible si la donnees n'est pas remplie
+				// Champ obligatoire
+				return null;
 			}
 
 			// L'Organisateur
 			try {
-				rando.setOrganisateur(bodyData
+				String organisateur = bodyData
 						.getElementById("txt_ref_int_organisateur")
-						.childNode(2).childNode(0).toString());
+						.childNode(2).childNode(0).toString();
+				rando.setOrganisateur(Html.fromHtml(organisateur).toString());
 			} catch (IndexOutOfBoundsException e) {
 				// Possible si la donnees n'est pas remplie
 			}
 
 			// Le Lieu du RDV
 			try {
-				rando.setLieuRdv(bodyData.getElementById("txt_ref_int_ldrdv")
-						.childNode(1).childNode(0).toString());
+				String lieuRdv = bodyData.getElementById("txt_ref_int_ldrdv")
+						.childNode(1).childNode(0).toString();
+				rando.setLieuRdv(Html.fromHtml(lieuRdv).toString());
 			} catch (IndexOutOfBoundsException e) {
 				// Possible si la donnees n'est pas remplie
 			}
 
 			// Le Prix Public
 			try {
-				rando.setPrixPublic(bodyData
+				String prixPublic = bodyData
 						.getElementById("txt_ref_int_prix2").childNode(0)
-						.childNode(0).toString());
+						.childNode(0).toString();
+				rando.setPrixPublic(Html.fromHtml(prixPublic).toString());
 			} catch (IndexOutOfBoundsException e) {
 				// Possible si la donnees n'est pas remplie
 			}
 
 			// Le Prix Club
 			try {
-				rando.setPrixClub(bodyData.getElementById("txt_ref_int_prix4")
-						.childNode(1).childNode(0).toString());
+				String prixClub = bodyData.getElementById("txt_ref_int_prix4")
+						.childNode(1).childNode(0).toString();
+				rando.setPrixClub(Html.fromHtml(prixClub).toString());
 			} catch (IndexOutOfBoundsException e) {
 				// Possible si la donnees n'est pas remplie
 			}
 
 			// Le Contact
 			try {
-				rando.setContact(bodyData
+				String contact = bodyData
 						.getElementById("txt_ref_int_contacttxt").childNode(0)
-						.childNode(0).toString());
+						.childNode(0).toString();
+				rando.setContact(Html.fromHtml(contact).toString());
 			} catch (IndexOutOfBoundsException e) {
 				// Possible si la donnees n'est pas remplie
 			}
 
 			// La Description
 			try {
-				rando.setDescription(bodyData
-						.getElementById("txt_ref_int_decription").childNode(0)
-						.childNode(0).toString());
+				String description = bodyData
+						.getElementById("txt_ref_int_decription").childNode(1)
+						.childNode(0).toString();
+				rando.setDescription(Html.fromHtml(description).toString());
 			} catch (IndexOutOfBoundsException e) {
 				// Possible si la donnees n'est pas remplie
 			}
 
 			// TODO : FLYER
-			// TODO : Reference
 
 			rando.setTemporaire(false);
 
@@ -160,9 +195,9 @@ public class ParserDetailRando {
 		return rando;
 
 	}
-
 	// /**
-	// * MÃ©thode d'extraction des donnees d'une rando.
+	// * Methode d'extraction des donnees d'une rando
+	// * a partir du texte du <Body>.
 	// *
 	// * @param detailRandoText
 	// * Detail d'une rando
@@ -267,7 +302,6 @@ public class ParserDetailRando {
 	// try {
 	// rando.setDate(sdf.parse(result));
 	// } catch (ParseException e) {
-	// // TODO
 	// System.out.println(result);
 	// }
 	// }
@@ -354,7 +388,7 @@ public class ParserDetailRando {
 	//
 	// rando.setTemporaire(false);
 	//
-	// // FIXME if all ok, else null
+	// // if all ok, else null
 	// return rando;
 	// }
 }

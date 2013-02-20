@@ -256,7 +256,8 @@ public class RandoBZH extends SherlockActivity {
 
 			// Utilisé pour les tests afin de limiter le nb de telechargements
 			// par departement
-			int limit = 10;
+			boolean noLimit = true;
+			int limitMax = 10;
 			int count = 0;
 
 			for (int i = 0; i < selectedDepartements.length; i++) {
@@ -271,11 +272,13 @@ public class RandoBZH extends SherlockActivity {
 					for (Rando r : randosTemp) {
 						if (r.getDepartement() == departement.intValue()) {
 
-							if (count < limit) {
+							if (noLimit || count < limitMax) {
 								// On recupere les details de la rando avec
 								// parser HTML
 								r = ParserDetailRando.parserDetailRando(r);
-								randosTempDept.add(r);
+								if (r != null) {
+									randosTempDept.add(r);
+								}
 								count++;
 							}
 						}
