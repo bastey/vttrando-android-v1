@@ -61,7 +61,7 @@ public class ParserListeRandos {
 			SAXParser parser = saxFactory.newSAXParser();
 			XMLReader reader = parser.getXMLReader();
 			ParserListeRandosHandler myXMLHandler = new ParserListeRandosHandler(
-					departements);
+					departements, typeSport);
 			reader.setContentHandler(myXMLHandler);
 
 			// Recuperation de l'URL a parser

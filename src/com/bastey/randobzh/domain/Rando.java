@@ -3,6 +3,7 @@ package com.bastey.randobzh.domain;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -11,8 +12,6 @@ import android.os.Parcelable;
  * Objet Randonnee.
  * 
  * @author bastey
- * @version 1.0
- * 
  */
 public class Rando implements Comparable<Rando>, Parcelable {
 
@@ -72,8 +71,10 @@ public class Rando implements Comparable<Rando>, Parcelable {
 	/** URL PAGE WEB DETAIL DE LA RANDO. */
 	private String urlDetailWeb;
 
-	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-	private SimpleDateFormat sdfWithoutYear = new SimpleDateFormat("dd/MM");
+	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy",
+			Locale.FRANCE);
+	private SimpleDateFormat sdfWithoutYear = new SimpleDateFormat("dd/MM",
+			Locale.FRANCE);
 
 	/**
 	 * Constructeur par defaut.
@@ -368,7 +369,6 @@ public class Rando implements Comparable<Rando>, Parcelable {
 		// char LF = CharUtils.LF;
 		String LF = "\n";
 		StringBuffer sb = new StringBuffer();
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		sb.append("Rando : '").append(id).append("'");
 		sb.append(LF).append(TAB).append("Sport : '").append(typeSport.name())
 				.append("'");
@@ -399,12 +399,26 @@ public class Rando implements Comparable<Rando>, Parcelable {
 		return sb.toString();
 	}
 
+	/**
+	 * Comparateur permettant de trier les randos. <br>
+	 * Sert au trie dans la vue Liste des randos.
+	 * <p>
+	 * On trie est Date, puis département, puis nom.
+	 * 
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 */
 	@Override
 	public int compareTo(Rando rando) {
 		int result = this.getDate().compareTo(rando.getDate());
-		if (result == 0 && this.getNom() != null) {
-			result = this.getNom().compareToIgnoreCase(rando.getNom());
+
+		if (result == 0) {
+			result = Integer.valueOf(this.getDepartement()).compareTo(
+					Integer.valueOf(rando.getDepartement()));
+			if (result == 0 && this.getNom() != null) {
+				result = this.getNom().compareToIgnoreCase(rando.getNom());
+			}
 		}
+
 		return result;
 	}
 

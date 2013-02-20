@@ -7,12 +7,12 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import com.bastey.randobzh.R;
 import com.bastey.randobzh.domain.Rando;
 
 /**
  * Détail d'une randonnee.
  * 
+ * @author bastey
  */
 public class RandoDetailActivity extends SherlockActivity {
 

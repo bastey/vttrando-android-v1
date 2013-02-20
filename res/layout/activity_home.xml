@@ -201,11 +201,28 @@
                 android:onClick="openRandoListView"
                 android:text="@string/bouton_listRandos" />
 
-            <ProgressBar
-                android:id="@+id/progressBar"
+            <LinearLayout
+                android:id="@+id/linearLayout_progressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone" />
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+
+	            <ProgressBar
+	                android:id="@+id/progressBar"
+	                android:layout_width="28dp"
+	                android:layout_height="28dp" />
+
+	            <TextView
+	                android:id="@+id/txtChargement"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="5dp"
+	                android:text="@string/chargement" />
+
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

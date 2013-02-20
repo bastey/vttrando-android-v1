@@ -1,15 +1,23 @@
 package com.bastey.randobzh;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo.State;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ProgressBar;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -18,21 +26,30 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.bastey.randobzh.domain.EnumTypeSport;
+import com.bastey.randobzh.domain.GestionnaireRandos;
+import com.bastey.randobzh.domain.Rando;
+import com.bastey.randobzh.util.parser.ParserDetailRando;
+import com.bastey.randobzh.util.parser.ParserListeRandos;
 
 /**
  * Page d'accueil de l'application Rando BZH.
+ * 
+ * @author bastey
  */
 public class RandoBZH extends SherlockActivity {
 
 	/** Composants définis dans la vue. */
 	private RadioButton radioVTT, radioCyclo, radioMarche;
 	private CheckBox dpt22, dpt29, dpt35, dpt56, dpt44;
-	private ProgressBar pb;
-	// private Button boutonRando;
+	private Button randoButton;
+	private LinearLayout layoutProgressBar;
 
 	/** Composants sélectionnés. */
 	private EnumTypeSport selectedSport = null;
 	private int[] selectedDepartements = null;
+
+	/** Map des randos en fonction du sport selectionne. */
+	private Map<Integer, List<Rando>> mapRandos = null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -53,9 +70,9 @@ public class RandoBZH extends SherlockActivity {
 		dpt56 = (CheckBox) this.findViewById(R.id.checkBox_dpt56);
 		dpt44 = (CheckBox) this.findViewById(R.id.checkBox_dpt44);
 
-		// boutonRando = (Button) this.findViewById(R.id.buttonRandoList);
-		pb = (ProgressBar) this.findViewById(R.id.progressBar);
-
+		randoButton = (Button) this.findViewById(R.id.buttonRandoList);
+		layoutProgressBar = (LinearLayout) this
+				.findViewById(R.id.linearLayout_progressBar);
 	}
 
 	@Override
@@ -69,57 +86,11 @@ public class RandoBZH extends SherlockActivity {
 	 * 
 	 * @param view
 	 */
-	private void openRandoListView2(View view) {
+	public void openRandoListView(View view) {
 
-		if (radioVTT.isChecked()) {
-			selectedSport = EnumTypeSport.VTT;
-		} else if (radioCyclo.isChecked()) {
-			selectedSport = EnumTypeSport.CYCLO;
-		} else if (radioMarche.isChecked()) {
-			selectedSport = EnumTypeSport.MARCHE;
-		}
-
-		selectedDepartements = new int[5];
-		int i = 0;
-		boolean oneDepChecked = false;
-		if (dpt22.isChecked()) {
-			selectedDepartements[i] = 22;
-			i++;
-			oneDepChecked = true;
-		}
-		if (dpt29.isChecked()) {
-			selectedDepartements[i] = 29;
-			i++;
-			oneDepChecked = true;
-		}
-		if (dpt35.isChecked()) {
-			selectedDepartements[i] = 35;
-			i++;
-			oneDepChecked = true;
-		}
-		if (dpt56.isChecked()) {
-			selectedDepartements[i] = 56;
-			i++;
-			oneDepChecked = true;
-		}
-		if (dpt44.isChecked()) {
-			selectedDepartements[i] = 44;
-			i++;
-			oneDepChecked = true;
-		}
-
-		if (oneDepChecked) {
-			Intent intent = new Intent(getApplicationContext(),
-					RandoListActivity.class);
-			intent.putExtra("typeSport", selectedSport.getValeur());
-			intent.putExtra("departements", selectedDepartements);
-			startActivity(intent);
-		} else {
-			Toast msg = Toast.makeText(this, R.string.msg_choisir_dpt,
-					Toast.LENGTH_SHORT);
-			msg.setGravity(Gravity.CENTER, 15, 15);
-			msg.show();
-		}
+		// On lance la tâche de fond de téléchargement
+		DownloadTask task = new DownloadTask();
+		task.execute();
 	}
 
 	@Override
@@ -156,44 +127,189 @@ public class RandoBZH extends SherlockActivity {
 		builder.create().show();
 	}
 
-	public void openRandoListView(View view) {
-
-		DownloadTask task = new DownloadTask();
-		task.execute();
-	}
-
 	/**
 	 * Traitement asychrone de téléchargement des randos.
 	 * 
 	 */
 	private class DownloadTask extends AsyncTask<Void, Void, Void> {
 
+		/** Temoin indiquant qu'au moins 1 departement est coche. */
+		private boolean oneDepChecked = false;
+
+		/** Temoin indiquant si le telechargement est complet. */
+		private boolean downloadComplete = false;
+
+		/** Temoin indiquant l'état de la connexion réseau. */
+		private boolean isInternetOn = false;
+
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			pb.setVisibility(View.VISIBLE);
+
+			// On recupere le sport selectionne
+			if (radioVTT.isChecked()) {
+				selectedSport = EnumTypeSport.VTT;
+			} else if (radioCyclo.isChecked()) {
+				selectedSport = EnumTypeSport.CYCLO;
+			} else if (radioMarche.isChecked()) {
+				selectedSport = EnumTypeSport.MARCHE;
+			}
+
+			// On recupere les departements selectionnes
+			selectedDepartements = new int[5];
+			int i = 0;
+			oneDepChecked = false;
+			if (dpt22.isChecked()) {
+				selectedDepartements[i] = 22;
+				i++;
+				oneDepChecked = true;
+			}
+			if (dpt29.isChecked()) {
+				selectedDepartements[i] = 29;
+				i++;
+				oneDepChecked = true;
+			}
+			if (dpt35.isChecked()) {
+				selectedDepartements[i] = 35;
+				i++;
+				oneDepChecked = true;
+			}
+			if (dpt56.isChecked()) {
+				selectedDepartements[i] = 56;
+				i++;
+				oneDepChecked = true;
+			}
+			if (dpt44.isChecked()) {
+				selectedDepartements[i] = 44;
+				i++;
+				oneDepChecked = true;
+			}
+
+			// Si au moins 1 dpt est coché
+			if (oneDepChecked) {
+				// On verifie l'état de la connexion Internet
+				isInternetOn = isInternetOn();
+
+				if (isInternetOn) {
+					randoButton.setVisibility(View.GONE);
+					layoutProgressBar.setVisibility(View.VISIBLE);
+				}
+
+			} else {
+				Toast msg = Toast.makeText(getApplicationContext(),
+						R.string.msg_choisir_dpt, Toast.LENGTH_SHORT);
+				msg.setGravity(Gravity.CENTER, 15, 15);
+				msg.show();
+			}
+
 		}
 
 		@Override
 		protected Void doInBackground(Void... params) {
 
-			try {
-				Thread.sleep(3000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			if (oneDepChecked && isInternetOn) {
+				downloadRandos();
+				downloadComplete = true;
 			}
-
 			return null;
 		}
 
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
-			pb.setVisibility(View.GONE);
-			Toast.makeText(getApplicationContext(),
-					"Le téléchargement des randonnées est terminé",
-					Toast.LENGTH_LONG).show();
+
+			if (downloadComplete) {
+				Intent intent = new Intent(getApplicationContext(),
+						RandoListActivity.class);
+				intent.putExtra("typeSport", selectedSport.getValeur());
+				intent.putExtra("departements", selectedDepartements);
+				startActivity(intent);
+
+				randoButton.setVisibility(View.VISIBLE);
+				layoutProgressBar.setVisibility(View.GONE);
+			}
+		}
+
+		/**
+		 * Telechargement des randos.
+		 */
+		private void downloadRandos() {
+			// Initialisation du Parser XML de la liste des randonnees.
+			ParserListeRandos parserListe = new ParserListeRandos(
+					selectedSport, selectedDepartements);
+			List<Rando> randosTemp = parserListe.recupererListRandos();
+
+			// On recupere la bonne liste des randos
+			switch (selectedSport) {
+			case VTT:
+				mapRandos = GestionnaireRandos.randosVTT;
+				break;
+			case CYCLO:
+				mapRandos = GestionnaireRandos.randosCyclo;
+				break;
+			case MARCHE:
+				mapRandos = GestionnaireRandos.randosMarche;
+				break;
+			default:
+				break;
+			}
+
+			// Utilisé pour les tests afin de limiter le nb de telechargements
+			// par departement
+			int limit = 10;
+			int count = 0;
+
+			for (int i = 0; i < selectedDepartements.length; i++) {
+				Integer departement = selectedDepartements[i];
+
+				if (departement != 0 && !mapRandos.containsKey(departement)) {
+					// 1ere fois qu'on affiche les randos pour ce sport et ce
+					// departement
+
+					// On recupere les randos du departement
+					List<Rando> randosTempDept = new ArrayList<Rando>();
+					for (Rando r : randosTemp) {
+						if (r.getDepartement() == departement.intValue()) {
+
+							if (count < limit) {
+								// On recupere les details de la rando avec
+								// parser HTML
+								r = ParserDetailRando.parserDetailRando(r);
+								randosTempDept.add(r);
+								count++;
+							}
+						}
+					}
+					// On ajoute dans la bonne Map la liste des randos avec
+					// detail pour le departement et le sport selectionne
+					mapRandos.put(departement, randosTempDept);
+				}
+			}
+		}
+
+		/**
+		 * Méthode permettant de connaitre si le device est connecté a internet
+		 * via GPRS ou Wifi.
+		 * 
+		 * @return True si connecté, false sinon.
+		 */
+		private boolean isInternetOn() {
+			boolean result = false;
+			ConnectivityManager connec = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+			if (connec.getNetworkInfo(0).getState() == State.CONNECTED
+					|| connec.getNetworkInfo(0).getState() == State.CONNECTING
+					|| connec.getNetworkInfo(1).getState() == State.CONNECTED
+					|| connec.getNetworkInfo(1).getState() == State.CONNECTING) {
+				result = true;
+			} else if (connec.getNetworkInfo(0).getState() == State.DISCONNECTED
+					|| connec.getNetworkInfo(1).getState() == State.DISCONNECTED) {
+				Toast msg = Toast.makeText(getApplicationContext(),
+						R.string.msg_no_connection, Toast.LENGTH_SHORT);
+				msg.setGravity(Gravity.CENTER, 15, 15);
+				msg.show();
+				result = false;
+			}
+			return result;
 		}
 
 	}

@@ -9,6 +9,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import android.text.TextUtils;
 
+import com.bastey.randobzh.domain.EnumTypeSport;
 import com.bastey.randobzh.domain.Rando;
 
 /**
@@ -37,12 +38,16 @@ public class ParserListeRandosHandler extends DefaultHandler {
 	/** Departement selectionnes. */
 	private List<Integer> departements;
 
+	/** Sport selectionne. */
+	private EnumTypeSport typeSport;
+
 	/**
 	 * Constructeur.
 	 * 
 	 * @param pDepartements
 	 */
-	public ParserListeRandosHandler(int[] pDepartements) {
+	public ParserListeRandosHandler(int[] pDepartements,
+			EnumTypeSport pTypeSport) {
 		super();
 
 		departements = new ArrayList<Integer>();
@@ -51,6 +56,7 @@ public class ParserListeRandosHandler extends DefaultHandler {
 				departements.add(pDepartements[i]);
 			}
 		}
+		this.typeSport = pTypeSport;
 
 		listeRandosTemp = new ArrayList<Rando>();
 	}
@@ -64,6 +70,7 @@ public class ParserListeRandosHandler extends DefaultHandler {
 		if (inRando) {
 			if (qName.equals("title")) {
 				randoTemp = new Rando(true);
+				randoTemp.setTypeSport(typeSport);
 				buffer = new StringBuffer();
 			} else if (qName.equals("link")) {
 				buffer = new StringBuffer();

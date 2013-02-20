@@ -15,10 +15,12 @@
     <string name="dpt44">44</string>
     <string name="title_activity_rando_list">Randonnées</string>
     <string name="bouton_listRandos">Randonnées</string>
-    <string name="msg_choisir_dpt">Veuillez sélectionner au moins 1 département pour continuer</string>
+    <string name="msg_choisir_dpt">Veuillez sélectionner au moins un département</string>
     <string name="label_titreHome">Le calendrier des randonnées bretonnes</string>
     <string name="label_sports">Sports :</string>
     <string name="label_departements">Départements :</string>
+    <string name="chargement">Chargement en cours &#8230;</string>
+    <string name="msg_no_connection">Pas de connexion réseau, impossible de charger les nouvelles randos.</string>
 
     <!-- Page Liste des randos -->
     <string name="tab1">Janvier</string>

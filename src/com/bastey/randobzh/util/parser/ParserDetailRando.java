@@ -3,6 +3,7 @@ package com.bastey.randobzh.util.parser;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -20,13 +21,8 @@ import com.bastey.randobzh.domain.Rando;
  */
 public class ParserDetailRando {
 
-	private static SimpleDateFormat sdf = new SimpleDateFormat(" dd/MM/yyyy");
-
-	/**
-	 * Constructeur.
-	 */
-	public ParserDetailRando() {
-	}
+	private static SimpleDateFormat sdf = new SimpleDateFormat(" dd/MM/yyyy",
+			Locale.FRANCE);
 
 	/**
 	 * Permet de parser une page HTML de detail d'une rando
@@ -144,6 +140,7 @@ public class ParserDetailRando {
 			}
 
 			// TODO : FLYER
+			// TODO : Reference
 
 			rando.setTemporaire(false);
 
