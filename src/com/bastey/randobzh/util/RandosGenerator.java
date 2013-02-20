@@ -1,14 +1,26 @@
 package com.bastey.randobzh.util;
 
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import com.bastey.randobzh.domain.EnumTypeSport;
 import com.bastey.randobzh.domain.Rando;
-import com.bastey.randobzh.domain.Randos;
 
+/**
+ * Classe utilitaire : bouchon générateur de randos.
+ * 
+ */
 public class RandosGenerator {
 
-	public static void initData(Randos randos) {
+	/** Liste des randos generees. */
+	private List<Rando> randos = new ArrayList<Rando>();
+
+	public RandosGenerator() {
+		initData();
+	}
+
+	public void initData() {
 
 		// Rando1
 		Rando r1 = new Rando();
@@ -593,4 +605,7 @@ public class RandosGenerator {
 
 	}
 
+	public List<Rando> getRandos() {
+		return randos;
+	}
 }

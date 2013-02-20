@@ -19,6 +19,12 @@ public class Rando implements Comparable<Rando>, Parcelable {
 	/** Reference de la rando. */
 	private int id;
 
+	/**
+	 * Flag indiquant que la rando est temporaire : les détails ne sont pas
+	 * encore récupérés.
+	 */
+	private boolean temporaire;
+
 	/** Type de sport. */
 	private EnumTypeSport typeSport;
 
@@ -74,6 +80,14 @@ public class Rando implements Comparable<Rando>, Parcelable {
 	 */
 	public Rando() {
 		super();
+	}
+
+	/**
+	 * Constructeur d'une rando Temporaire.
+	 */
+	public Rando(boolean pTemporaire) {
+		super();
+		this.setTemporaire(pTemporaire);
 	}
 
 	/**
@@ -331,6 +345,21 @@ public class Rando implements Comparable<Rando>, Parcelable {
 	}
 
 	/**
+	 * @return the temporaire flag
+	 */
+	public boolean isTemporaire() {
+		return temporaire;
+	}
+
+	/**
+	 * @param temporaire
+	 *            the temporaire to set
+	 */
+	public void setTemporaire(boolean temporaire) {
+		this.temporaire = temporaire;
+	}
+
+	/**
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -418,22 +447,22 @@ public class Rando implements Comparable<Rando>, Parcelable {
 
 	public Rando(Parcel in) {
 		try {
-		this.id = in.readInt();
-		this.typeSport = EnumTypeSport.getTypeSport(in.readString());
-		this.departement = in.readInt();
-		this.date = sdf.parse(in.readString());
-		this.lieu = in.readString();
-		this.nom = in.readString();
-		this.organisateur = in.readString();
-		this.lieuRdv = in.readString();
-		this.horaires = in.readString();
-		this.siteWeb = in.readString();
-		this.prixPublic = in.readString();
-		this.prixClub = in.readString();
-		this.contact = in.readString();
-		this.description = in.readString();
-		this.urlFlyer = in.readString();
-		this.urlDetailWeb = in.readString();
+			this.id = in.readInt();
+			this.typeSport = EnumTypeSport.getTypeSport(in.readString());
+			this.departement = in.readInt();
+			this.date = sdf.parse(in.readString());
+			this.lieu = in.readString();
+			this.nom = in.readString();
+			this.organisateur = in.readString();
+			this.lieuRdv = in.readString();
+			this.horaires = in.readString();
+			this.siteWeb = in.readString();
+			this.prixPublic = in.readString();
+			this.prixClub = in.readString();
+			this.contact = in.readString();
+			this.description = in.readString();
+			this.urlFlyer = in.readString();
+			this.urlDetailWeb = in.readString();
 		} catch (ParseException e) {
 			// TODO
 			e.printStackTrace();

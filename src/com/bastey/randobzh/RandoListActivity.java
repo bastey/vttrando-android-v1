@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Map;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,12 +24,17 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.bastey.randobzh.adapter.RandoListAdapter;
 import com.bastey.randobzh.domain.EnumTypeSport;
+import com.bastey.randobzh.domain.GestionnaireRandos;
 import com.bastey.randobzh.domain.Rando;
-import com.bastey.randobzh.domain.Randos;
-import com.bastey.randobzh.util.RandosGenerator;
+import com.bastey.randobzh.util.parser.ParserDetailRando;
+import com.bastey.randobzh.util.parser.ParserListeRandos;
 
 /**
  * Liste des randonnées.
+ */
+/**
+ * @author BSTEY
+ * 
  */
 public class RandoListActivity extends SherlockFragmentActivity implements
 		ActionBar.TabListener {
@@ -39,11 +45,6 @@ public class RandoListActivity extends SherlockFragmentActivity implements
 	/** Liste des departements selectionnes. */
 	private int[] selectedDepartements;
 
-	/** Liste complete des randos. */
-	private Randos randos;
-	/** Randos filtrees en fonctions des criteres saisis dans la page d'accueil. */
-	private List<Rando> randoFiltered;
-
 	/** Mois courant (variable globale car passee dans le fragment) */
 	private int currentMonth = 1;
 
@@ -52,6 +53,9 @@ public class RandoListActivity extends SherlockFragmentActivity implements
 
 	/** Adapter d'une Rando dans un Liste. */
 	private RandoListAdapter adapter;
+
+	/** Map des randos en fonction du sport selectionne. */
+	private Map<Integer, List<Rando>> mapRandos = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -78,14 +82,65 @@ public class RandoListActivity extends SherlockFragmentActivity implements
 		selectedDepartements = this.getIntent().getExtras()
 				.getIntArray("departements");
 
-		// Initialisation des randos de test (CACHE)
-		if (randos == null) {
-			randos = new Randos();
-			RandosGenerator.initData(randos);
-		}
+		// // Initialisation des randos de test (CACHE)
+		// if (gestionnaireRandos == null) {
+		// gestionnaireRandos = new GestionnaireRandos();
+		// RandosGenerator generator = new RandosGenerator();
+		// }
+
 		// Filtrage des randos en fonction des donnees de l'accueil
-		randoFiltered = randos.getRandosFromSportAndDpts(selectedSport,
+		// randoFiltered = randos.getRandosFromSportAndDpts(selectedSport,
+		// selectedDepartements);
+
+		// Initialisation du Parser XML de la liste des randonnees.
+		ParserListeRandos parserListe = new ParserListeRandos(selectedSport,
 				selectedDepartements);
+		List<Rando> randosTemp = parserListe.recupererListRandos();
+
+		// On sauvegarde les randos et leurs details le temps de l'application
+		switch (selectedSport) {
+		case VTT:
+			mapRandos = GestionnaireRandos.randosVTT;
+			break;
+		case CYCLO:
+			mapRandos = GestionnaireRandos.randosCyclo;
+			break;
+		case MARCHE:
+			mapRandos = GestionnaireRandos.randosMarche;
+			break;
+		default:
+			break;
+		}
+
+		int limit = 10;
+		int count = 0;
+
+		for (int i = 0; i < selectedDepartements.length; i++) {
+			Integer departement = selectedDepartements[i];
+
+			if (departement != 0 && !mapRandos.containsKey(departement)) {
+				// 1ere fois qu'on affiche les randos pour ce sport et ce
+				// departement
+
+				// On recupere les randos du departement
+				List<Rando> randosTempDept = new ArrayList<Rando>();
+				for (Rando r : randosTemp) {
+					if (r.getDepartement() == departement.intValue()) {
+
+						if (count < limit) {
+							// On recupere les details de la rando avec parser
+							// HTML
+							r = ParserDetailRando.parserDetailRando(r);
+							randosTempDept.add(r);
+							count++;
+						}
+					}
+				}
+				// On ajoute dans la bonne Map la liste des randos avec detail
+				// pour le departement et le sport selectionne
+				mapRandos.put(departement, randosTempDept);
+			}
+		}
 
 		// Generation des onglets
 		GregorianCalendar calendar = new GregorianCalendar();
@@ -123,8 +178,17 @@ public class RandoListActivity extends SherlockFragmentActivity implements
 		// On filtre les randos sur le mois selectionne
 		List<Rando> randosFilteredForTab = new ArrayList<Rando>();
 		Calendar cal = Calendar.getInstance();
-		if (randoFiltered != null) {
-			for (Rando rando : randoFiltered) {
+
+		if (mapRandos != null) {
+
+			List<Rando> randosForDptsSelected = new ArrayList<Rando>();
+			for (int dpt : selectedDepartements) {
+				if (dpt != 0) {
+					randosForDptsSelected.addAll(mapRandos.get(dpt));
+				}
+			}
+
+			for (Rando rando : randosForDptsSelected) {
 				cal.setTime(rando.getDate());
 				if (cal.get(Calendar.MONTH) == selectedmonth) {
 					randosFilteredForTab.add(rando);
