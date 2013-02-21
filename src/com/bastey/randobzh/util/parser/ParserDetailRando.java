@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -28,7 +29,7 @@ public class ParserDetailRando {
 
 	/**
 	 * Permet de parser une page HTML de detail d'une rando.<br>
-	 * Les caracteres HTML sont convertis avec la methode Html.fromHtml(String).
+	 * Les caracteres en code HTML sont décodés.
 	 * 
 	 * @param randoTemp
 	 *            La rando temporaire dont les details sont a recuperer
@@ -73,7 +74,9 @@ public class ParserDetailRando {
 			try {
 				String lieu = bodyData.getElementById("txt_ref_int_lieu")
 						.childNode(4).childNode(0).toString();
-				rando.setLieu(Html.fromHtml(lieu).toString());
+
+				// rando.setLieu(Html.fromHtml(lieu).toString());
+				rando.setLieu(StringEscapeUtils.unescapeHtml4(lieu));
 				if (TextUtils.isEmpty(lieu)) {
 					// Champ obligatoire
 					return null;
@@ -91,7 +94,8 @@ public class ParserDetailRando {
 					siteWeb.trim();
 				}
 
-				rando.setSiteWeb(Html.fromHtml(siteWeb).toString());
+				// rando.setSiteWeb(Html.fromHtml(siteWeb).toString());
+				rando.setSiteWeb(StringEscapeUtils.unescapeHtml4(siteWeb));
 			} catch (IndexOutOfBoundsException e) {
 				// Possible si la donnees n'est pas remplie
 			}
@@ -101,7 +105,8 @@ public class ParserDetailRando {
 				String horaires = bodyData
 						.getElementById("txt_ref_int_horaires").childNode(2)
 						.childNode(0).toString();
-				rando.setHoraires(Html.fromHtml(horaires).toString());
+				// rando.setHoraires(Html.fromHtml(horaires).toString());
+				rando.setHoraires(StringEscapeUtils.unescapeHtml4(horaires));
 			} catch (IndexOutOfBoundsException e) {
 				// Possible si la donnees n'est pas remplie
 			}
@@ -110,7 +115,8 @@ public class ParserDetailRando {
 			try {
 				String nom = bodyData.getElementById("txt_ref_int_nom")
 						.childNode(2).childNode(0).toString();
-				rando.setNom(Html.fromHtml(nom).toString());
+				// rando.setNom(Html.fromHtml(nom).toString());
+				rando.setNom(StringEscapeUtils.unescapeHtml4(nom));
 				if (TextUtils.isEmpty(nom)) {
 					// Champ obligatoire
 					return null;
@@ -125,7 +131,9 @@ public class ParserDetailRando {
 				String organisateur = bodyData
 						.getElementById("txt_ref_int_organisateur")
 						.childNode(2).childNode(0).toString();
-				rando.setOrganisateur(Html.fromHtml(organisateur).toString());
+				// rando.setOrganisateur(Html.fromHtml(organisateur).toString());
+				rando.setOrganisateur(StringEscapeUtils
+						.unescapeHtml4(organisateur));
 			} catch (IndexOutOfBoundsException e) {
 				// Possible si la donnees n'est pas remplie
 			}
@@ -134,7 +142,8 @@ public class ParserDetailRando {
 			try {
 				String lieuRdv = bodyData.getElementById("txt_ref_int_ldrdv")
 						.childNode(1).childNode(0).toString();
-				rando.setLieuRdv(Html.fromHtml(lieuRdv).toString());
+				// rando.setLieuRdv(Html.fromHtml(lieuRdv).toString());
+				rando.setLieuRdv(StringEscapeUtils.unescapeHtml4(lieuRdv));
 			} catch (IndexOutOfBoundsException e) {
 				// Possible si la donnees n'est pas remplie
 			}
@@ -145,6 +154,7 @@ public class ParserDetailRando {
 						.getElementById("txt_ref_int_prix2").childNode(0)
 						.childNode(0).toString();
 				rando.setPrixPublic(Html.fromHtml(prixPublic).toString());
+				// rando.setPrixPublic(StringEscapeUtils.unescapeHtml4(prixPublic));
 			} catch (IndexOutOfBoundsException e) {
 				// Possible si la donnees n'est pas remplie
 			}
@@ -154,6 +164,7 @@ public class ParserDetailRando {
 				String prixClub = bodyData.getElementById("txt_ref_int_prix4")
 						.childNode(1).childNode(0).toString();
 				rando.setPrixClub(Html.fromHtml(prixClub).toString());
+				// rando.setPrixClub(StringEscapeUtils.unescapeHtml4(prixClub));
 			} catch (IndexOutOfBoundsException e) {
 				// Possible si la donnees n'est pas remplie
 			}
@@ -163,7 +174,8 @@ public class ParserDetailRando {
 				String contact = bodyData
 						.getElementById("txt_ref_int_contacttxt").childNode(0)
 						.childNode(0).toString();
-				rando.setContact(Html.fromHtml(contact).toString());
+				// rando.setContact(Html.fromHtml(contact).toString());
+				rando.setContact(StringEscapeUtils.unescapeHtml4(contact));
 			} catch (IndexOutOfBoundsException e) {
 				// Possible si la donnees n'est pas remplie
 			}
@@ -174,6 +186,7 @@ public class ParserDetailRando {
 						.getElementById("txt_ref_int_decription").childNode(1)
 						.childNode(0).toString();
 				rando.setDescription(Html.fromHtml(description).toString());
+				// rando.setDescription(StringEscapeUtils.unescapeHtml4(description));
 			} catch (IndexOutOfBoundsException e) {
 				// Possible si la donnees n'est pas remplie
 			}
