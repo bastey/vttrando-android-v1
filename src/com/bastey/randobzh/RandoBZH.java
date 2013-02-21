@@ -1,8 +1,13 @@
 package com.bastey.randobzh;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -26,10 +31,9 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.bastey.randobzh.domain.EnumTypeSport;
+import com.bastey.randobzh.domain.EnumUrlRando;
 import com.bastey.randobzh.domain.GestionnaireRandos;
 import com.bastey.randobzh.domain.Rando;
-import com.bastey.randobzh.util.parser.ParserDetailRando;
-import com.bastey.randobzh.util.parser.ParserListeRandos;
 
 /**
  * Page d'accueil de l'application Rando BZH.
@@ -232,12 +236,13 @@ public class RandoBZH extends SherlockActivity {
 
 		/**
 		 * Telechargement des randos.
+		 * 
 		 */
 		private void downloadRandos() {
 			// Initialisation du Parser XML de la liste des randonnees.
-			ParserListeRandos parserListe = new ParserListeRandos(
-					selectedSport, selectedDepartements);
-			List<Rando> randosTemp = parserListe.recupererListRandos();
+			// ParserListeRandos parserListe = new ParserListeRandos(
+			// selectedSport, selectedDepartements);
+			// List<Rando> randosTemp = parserListe.recupererListRandos();
 
 			// On recupere la bonne liste des randos
 			switch (selectedSport) {
@@ -256,38 +261,58 @@ public class RandoBZH extends SherlockActivity {
 
 			// Utilisé pour les tests afin de limiter le nb de telechargements
 			// par departement
-			boolean noLimit = true;
-			int limitMax = 10;
-			int count = 0;
+			// boolean noLimit = true;
+			// int limitMax = 10;
+			// int count = 0;
+			//
+			// for (int i = 0; i < selectedDepartements.length; i++) {
+			// Integer departement = selectedDepartements[i];
+			//
+			// if (departement != 0 && !mapRandos.containsKey(departement)) {
+			// // 1ere fois qu'on affiche les randos pour ce sport et ce
+			// // departement
+			//
+			// // On recupere les randos du departement
+			// List<Rando> randosTempDept = new ArrayList<Rando>();
+			// for (Rando r : randosTemp) {
+			// if (r.getDepartement() == departement.intValue()) {
+			//
+			// if (noLimit || count < limitMax) {
+			// // On recupere les details de la rando avec
+			// // parser HTML
+			// r = ParserDetailRando.parserDetailRando(r);
+			// if (r != null) {
+			// randosTempDept.add(r);
+			// }
+			// count++;
+			// }
+			// }
+			// }
+			// // On ajoute dans la bonne Map la liste des randos avec
+			// // detail pour le departement et le sport selectionne
+			// mapRandos.put(departement, randosTempDept);
+			// }
+			// }
 
-			for (int i = 0; i < selectedDepartements.length; i++) {
-				Integer departement = selectedDepartements[i];
+			ObjectMapper mapper = new ObjectMapper();
 
-				if (departement != 0 && !mapRandos.containsKey(departement)) {
-					// 1ere fois qu'on affiche les randos pour ce sport et ce
-					// departement
+			File file = new File(EnumUrlRando.VTT_A_VENIR2.getUrl());
 
-					// On recupere les randos du departement
-					List<Rando> randosTempDept = new ArrayList<Rando>();
-					for (Rando r : randosTemp) {
-						if (r.getDepartement() == departement.intValue()) {
-
-							if (noLimit || count < limitMax) {
-								// On recupere les details de la rando avec
-								// parser HTML
-								r = ParserDetailRando.parserDetailRando(r);
-								if (r != null) {
-									randosTempDept.add(r);
-								}
-								count++;
-							}
-						}
-					}
-					// On ajoute dans la bonne Map la liste des randos avec
-					// detail pour le departement et le sport selectionne
-					mapRandos.put(departement, randosTempDept);
-				}
+			List<Rando> randos;
+			try {
+				randos = (List<Rando>) mapper.readValue(file, Rando.class);
+				mapRandos.put(35, randos);
+			} catch (JsonParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JsonMappingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+
 		}
 
 		/**
